@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		344823C422392A780014B750 /* BlockObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344823C322392A780014B750 /* BlockObserver.swift */; };
+		344823CC22392BA40014B750 /* BlockObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344823CB22392BA40014B750 /* BlockObserver.swift */; };
+		344823CE22392C1B0014B750 /* BlockchainObserverInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344823CD22392C1B0014B750 /* BlockchainObserverInterface.swift */; };
+		344823D022392C420014B750 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344823CF22392C420014B750 /* Constants.swift */; };
+		344823D3223930EB0014B750 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344823D2223930EB0014B750 /* Asset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +27,10 @@
 
 /* Begin PBXFileReference section */
 		344823C022392A780014B750 /* libBlockObserver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBlockObserver.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		344823C322392A780014B750 /* BlockObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockObserver.swift; sourceTree = "<group>"; };
+		344823CB22392BA40014B750 /* BlockObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockObserver.swift; sourceTree = "<group>"; };
+		344823CD22392C1B0014B750 /* BlockchainObserverInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainObserverInterface.swift; sourceTree = "<group>"; };
+		344823CF22392C420014B750 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		344823D2223930EB0014B750 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +47,7 @@
 		344823B722392A780014B750 = {
 			isa = PBXGroup;
 			children = (
-				344823C222392A780014B750 /* BlockObserver */,
+				344823CA22392B060014B750 /* Sources */,
 				344823C122392A780014B750 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +60,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		344823C222392A780014B750 /* BlockObserver */ = {
+		344823CA22392B060014B750 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				344823C322392A780014B750 /* BlockObserver.swift */,
+				344823D1223930E10014B750 /* Models */,
+				344823CB22392BA40014B750 /* BlockObserver.swift */,
+				344823CD22392C1B0014B750 /* BlockchainObserverInterface.swift */,
+				344823CF22392C420014B750 /* Constants.swift */,
 			);
-			path = BlockObserver;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		344823D1223930E10014B750 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				344823D2223930EB0014B750 /* Asset.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +111,7 @@
 				TargetAttributes = {
 					344823BF22392A780014B750 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -119,7 +137,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				344823C422392A780014B750 /* BlockObserver.swift in Sources */,
+				344823CE22392C1B0014B750 /* BlockchainObserverInterface.swift in Sources */,
+				344823CC22392BA40014B750 /* BlockObserver.swift in Sources */,
+				344823D3223930EB0014B750 /* Asset.swift in Sources */,
+				344823D022392C420014B750 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,11 +266,18 @@
 		344823C822392A780014B750 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X24R65DM8E;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -258,8 +286,14 @@
 		344823C922392A780014B750 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X24R65DM8E;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
