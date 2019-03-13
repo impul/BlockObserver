@@ -13,14 +13,7 @@ public enum TransactionStatus {
     case confirmed(confirmations: UInt64)
 }
 
-public enum ObservingeMode {
-    case onCreating
-    case onCreatingBlock
-    case onConfirm
-    case all
-}
-
-public protocol BlockchainObserverDelegate {
+public protocol BlockchainObserverDelegate: class {
     func didReceive(newStatus: TransactionStatus, onObserver: BlockchainObserverInterface, address: Address, txId: String)
 }
 
@@ -28,6 +21,6 @@ public protocol BlockchainObserverInterface {
     init (delegate: BlockchainObserverDelegate)
     var asset: Asset { get }
     
-    func observe(_ address: Address, withMode: ObservingeMode)
+    func observe(_ address: Address)
     func removeObserver(_ address: Address)
 }

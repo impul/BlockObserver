@@ -11,15 +11,21 @@ import Foundation
 public class BlockObserver: BlockchainObserverDelegate {
     private var blockchainsObservers: [BlockchainObserverInterface] = []
     
+    public convenience init(assets: [Asset]) {
+        self.init(blockchainsObservers: assets.map {
+            return $0.defaultBlockchainObserver
+        })
+    }
+    
     public init(blockchainsObservers: [BlockchainObserverInterface.Type]) {
         self.blockchainsObservers = blockchainsObservers.map {
             return $0.init(delegate: self)
         }
     }
     
-    public func addObserver(for address: Address, asset: Asset, mode: ObservingeMode = .all) {
+    public func addObserver(for address: Address, asset: Asset) {
         blockchainObservers(for: asset).forEach {
-            $0.observe(address, withMode: mode)
+            $0.observe(address)
         }
     }
     

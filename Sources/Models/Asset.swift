@@ -11,4 +11,13 @@ import Foundation
 public enum Asset {
     case ethereum
     case ripple
+    
+    var defaultBlockchainObserver: BlockchainObserverInterface.Type {
+        switch self {
+        case .ethereum:
+            return EthereumBlockchainObserver.self
+        case .ripple:
+            return RippleBlockchainObserver.self
+        }
+    }
 }
