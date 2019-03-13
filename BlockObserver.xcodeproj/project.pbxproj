@@ -14,7 +14,18 @@
 		344823D6223940A40014B750 /* Ethereum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344823D5223940A40014B750 /* Ethereum.swift */; };
 		344823D8223940D50014B750 /* Ripple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344823D7223940D50014B750 /* Ripple.swift */; };
 		344823DA223943A00014B750 /* DefaultBlockchainObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344823D9223943A00014B750 /* DefaultBlockchainObserver.swift */; };
+		344823F3223947B10014B750 /* libBlockObserver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 344823C022392A780014B750 /* libBlockObserver.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		344823F4223947B10014B750 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 344823B822392A780014B750 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 344823BF22392A780014B750;
+			remoteInfo = BlockObserver;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		344823BE22392A780014B750 /* CopyFiles */ = {
@@ -37,6 +48,8 @@
 		344823D5223940A40014B750 /* Ethereum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ethereum.swift; sourceTree = "<group>"; };
 		344823D7223940D50014B750 /* Ripple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ripple.swift; sourceTree = "<group>"; };
 		344823D9223943A00014B750 /* DefaultBlockchainObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBlockchainObserver.swift; sourceTree = "<group>"; };
+		344823EE223947B10014B750 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		344823F2223947B10014B750 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +60,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		344823EB223947B10014B750 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344823F3223947B10014B750 /* libBlockObserver.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -54,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				344823CA22392B060014B750 /* Sources */,
+				344823EF223947B10014B750 /* Tests */,
 				344823C122392A780014B750 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				344823C022392A780014B750 /* libBlockObserver.a */,
+				344823EE223947B10014B750 /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,6 +119,14 @@
 			path = BlockchainObservers;
 			sourceTree = "<group>";
 		};
+		344823EF223947B10014B750 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				344823F2223947B10014B750 /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -116,6 +147,24 @@
 			productReference = 344823C022392A780014B750 /* libBlockObserver.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		344823ED223947B10014B750 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 344823F8223947B10014B750 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				344823EA223947B10014B750 /* Sources */,
+				344823EB223947B10014B750 /* Frameworks */,
+				344823EC223947B10014B750 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				344823F5223947B10014B750 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = 344823EE223947B10014B750 /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -129,6 +178,9 @@
 					344823BF22392A780014B750 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
+					};
+					344823ED223947B10014B750 = {
+						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
@@ -145,9 +197,20 @@
 			projectRoot = "";
 			targets = (
 				344823BF22392A780014B750 /* BlockObserver */,
+				344823ED223947B10014B750 /* Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		344823EC223947B10014B750 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		344823BC22392A780014B750 /* Sources */ = {
@@ -164,7 +227,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		344823EA223947B10014B750 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		344823F5223947B10014B750 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 344823BF22392A780014B750 /* BlockObserver */;
+			targetProxy = 344823F4223947B10014B750 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		344823C522392A780014B750 /* Debug */ = {
@@ -322,6 +400,42 @@
 			};
 			name = Release;
 		};
+		344823F6223947B10014B750 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X24R65DM8E;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Impulse.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		344823F7223947B10014B750 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X24R65DM8E;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Impulse.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -339,6 +453,15 @@
 			buildConfigurations = (
 				344823C822392A780014B750 /* Debug */,
 				344823C922392A780014B750 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		344823F8223947B10014B750 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				344823F6223947B10014B750 /* Debug */,
+				344823F7223947B10014B750 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
