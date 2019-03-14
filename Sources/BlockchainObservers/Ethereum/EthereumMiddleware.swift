@@ -8,7 +8,12 @@
 
 import Foundation
 
-public class EthereumMiddleware {
+public protocol EthereumMiddlewareInterface {
+    func getLastBlockNumber(lastBlock: @escaping (UInt32) -> Void)
+    func getTransactionInBlockRange(from: UInt32, to: UInt32, transactions: @escaping ([EthereumTransaction]) -> Void)
+}
+
+public class EthereumMiddleware: EthereumMiddlewareInterface {
     private let etherRpcNetwork: NetworkManagerInterface
     
     public init(url: String) {

@@ -12,9 +12,9 @@ internal class EthereumBlockchainObserver: DefaultBlockchainObserver {
     override var asset: Asset { return .ethereum }
     private var lastBlock: UInt32?
     
-    let endpointMiddlware: EthereumMiddleware
+    let endpointMiddlware: EthereumMiddlewareInterface
     
-    required init(endpointMiddlware: EthereumMiddleware, delegate: BlockchainObserverDelegate) {
+    required init(endpointMiddlware: EthereumMiddlewareInterface, delegate: BlockchainObserverDelegate) {
         self.endpointMiddlware = endpointMiddlware
         super.init(delegate: delegate)
     }
