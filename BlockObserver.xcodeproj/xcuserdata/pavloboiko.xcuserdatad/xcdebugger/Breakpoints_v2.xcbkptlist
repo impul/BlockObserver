@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sources/Network/Core/NetworkManager.swift"
-            timestampString = "574244739.186433"
+            filePath = "Sources/BlockObserver.swift"
+            timestampString = "574251317.165139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "makeRequest(_:result:)"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "didReceive(newStatus:onObserver:address:txId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

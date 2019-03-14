@@ -20,4 +20,13 @@ public enum Asset {
             return RippleBlockchainObserver.self
         }
     }
+    
+    var rpcUrl: String {
+        switch self {
+        case .ethereum:
+            return "http://ethereum-rpc.trustwalletapp.com"
+        case .ripple:
+            return "http://ripple-rpc.trustwalletapp.com"
+        }
+    }
 }

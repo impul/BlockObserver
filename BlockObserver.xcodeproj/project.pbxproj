@@ -23,6 +23,11 @@
 		34C091352239AB8B000FAF5C /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C091342239AB8B000FAF5C /* ErrorMessage.swift */; };
 		34C091372239ACA5000FAF5C /* RPC2RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C091362239ACA5000FAF5C /* RPC2RequestProtocol.swift */; };
 		34C0913A2239B0DB000FAF5C /* RPC2RequestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C091392239B0DB000FAF5C /* RPC2RequestsTests.swift */; };
+		34C0913F223A48AA000FAF5C /* EthereumEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0913E223A48AA000FAF5C /* EthereumEndpoint.swift */; };
+		34C09144223A4F08000FAF5C /* Numbers+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C09143223A4F08000FAF5C /* Numbers+Hex.swift */; };
+		34C09147223A5DAC000FAF5C /* CurrentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C09146223A5DAC000FAF5C /* CurrentBlock.swift */; };
+		34C0914B223A5F1E000FAF5C /* BlockchainObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0914A223A5F1E000FAF5C /* BlockchainObserverTests.swift */; };
+		34C0914E223A7140000FAF5C /* TestHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0914D223A7140000FAF5C /* TestHex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,11 @@
 		34C091342239AB8B000FAF5C /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		34C091362239ACA5000FAF5C /* RPC2RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPC2RequestProtocol.swift; sourceTree = "<group>"; };
 		34C091392239B0DB000FAF5C /* RPC2RequestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPC2RequestsTests.swift; sourceTree = "<group>"; };
+		34C0913E223A48AA000FAF5C /* EthereumEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumEndpoint.swift; sourceTree = "<group>"; };
+		34C09143223A4F08000FAF5C /* Numbers+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Hex.swift"; sourceTree = "<group>"; };
+		34C09146223A5DAC000FAF5C /* CurrentBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBlock.swift; sourceTree = "<group>"; };
+		34C0914A223A5F1E000FAF5C /* BlockchainObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainObserverTests.swift; sourceTree = "<group>"; };
+		34C0914D223A7140000FAF5C /* TestHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +118,7 @@
 		344823CA22392B060014B750 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				34C09140223A4EDA000FAF5C /* Foundation */,
 				34C091272239A9F5000FAF5C /* Network */,
 				344823D4223940700014B750 /* BlockchainObservers */,
 				344823D1223930E10014B750 /* Models */,
@@ -139,6 +150,7 @@
 		344823EF223947B10014B750 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				34C0914C223A712E000FAF5C /* Foundation */,
 				34C091382239B0C2000FAF5C /* Network */,
 				344823F2223947B10014B750 /* Info.plist */,
 			);
@@ -179,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				34C091392239B0DB000FAF5C /* RPC2RequestsTests.swift */,
+				34C0914A223A5F1E000FAF5C /* BlockchainObserverTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -186,7 +199,9 @@
 		34C0913B223A480E000FAF5C /* Ethereum */ = {
 			isa = PBXGroup;
 			children = (
+				34C09145223A5DA3000FAF5C /* Models */,
 				344823D5223940A40014B750 /* Ethereum.swift */,
+				34C0913E223A48AA000FAF5C /* EthereumEndpoint.swift */,
 			);
 			path = Ethereum;
 			sourceTree = "<group>";
@@ -197,6 +212,38 @@
 				344823D7223940D50014B750 /* Ripple.swift */,
 			);
 			path = Ripple;
+			sourceTree = "<group>";
+		};
+		34C09140223A4EDA000FAF5C /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				34C09142223A4EF2000FAF5C /* Extensions */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		34C09142223A4EF2000FAF5C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				34C09143223A4F08000FAF5C /* Numbers+Hex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		34C09145223A5DA3000FAF5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				34C09146223A5DAC000FAF5C /* CurrentBlock.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		34C0914C223A712E000FAF5C /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				34C0914D223A7140000FAF5C /* TestHex.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,12 +345,15 @@
 				34C0912B2239AA7F000FAF5C /* NetworkManagerInterface.swift in Sources */,
 				344823D3223930EB0014B750 /* Asset.swift in Sources */,
 				34C091292239AA53000FAF5C /* NetworkManager.swift in Sources */,
+				34C09144223A4F08000FAF5C /* Numbers+Hex.swift in Sources */,
 				344823D8223940D50014B750 /* Ripple.swift in Sources */,
 				34C0912F2239AAFC000FAF5C /* RequestBuilder.swift in Sources */,
 				344823D6223940A40014B750 /* Ethereum.swift in Sources */,
 				34C091312239AB37000FAF5C /* NetworkError.swift in Sources */,
 				344823D022392C420014B750 /* Constants.swift in Sources */,
 				34C0912D2239AACC000FAF5C /* RequestProtocol.swift in Sources */,
+				34C0913F223A48AA000FAF5C /* EthereumEndpoint.swift in Sources */,
+				34C09147223A5DAC000FAF5C /* CurrentBlock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +362,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				34C0913A2239B0DB000FAF5C /* RPC2RequestsTests.swift in Sources */,
+				34C0914E223A7140000FAF5C /* TestHex.swift in Sources */,
+				34C0914B223A5F1E000FAF5C /* BlockchainObserverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
