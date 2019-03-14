@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import Logging
 
 public class BlockObserver: BlockchainObserverDelegate {
     private var blockchainsObservers: [BlockchainObserverInterface] = []
+    private var logger: PrintLogger
     
     public convenience init(assets: [Asset]) {
         self.init(blockchainsObservers: assets.map {
@@ -18,6 +20,7 @@ public class BlockObserver: BlockchainObserverDelegate {
     }
     
     public init(blockchainsObservers: [BlockchainObserverInterface.Type]) {
+        logger = PrintLogger()
         self.blockchainsObservers = blockchainsObservers.map {
             return $0.init(delegate: self)
         }
@@ -41,6 +44,7 @@ public class BlockObserver: BlockchainObserverDelegate {
     
     // MARK: - BlockchainObserverDelegate
     public func didReceive(newStatus: TransactionStatus, onObserver: BlockchainObserverInterface, address: Address, txId: String) {
-        
+        let info = "Did receive tx to \(address), with txId \(txId)"
+        logger.info(info)
     }
 }
