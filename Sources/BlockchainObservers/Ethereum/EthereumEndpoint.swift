@@ -33,6 +33,4 @@ enum EthereumEndpoint: RPC2RequestProtocol {
             return [["fromBlock": from.hexString, "toBlock": to.hexString]]
         }
     }
-    
-    
 }
