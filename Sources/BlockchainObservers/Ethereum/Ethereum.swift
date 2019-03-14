@@ -10,8 +10,6 @@ import Foundation
 
 internal class EthereumBlockchainObserver: DefaultBlockchainObserver {
     override var asset: Asset { return .ethereum }
-    private let observeQueue: DispatchQueue
-    private var timer: BlocksTimer?
     private var lastBlock: UInt32?
     
     let endpointMiddlware: EthereumMiddleware
@@ -19,16 +17,10 @@ internal class EthereumBlockchainObserver: DefaultBlockchainObserver {
     required init(delegate: BlockchainObserverDelegate) {
         let rpcUrl = Asset.ethereum.rpcUrl
         endpointMiddlware = EthereumMiddleware(url: rpcUrl)
-        observeQueue = DispatchQueue(label: rpcUrl)
         super.init(delegate: delegate)
-        timer = BlocksTimer(tick: timerTick)
     }
     
-    private lazy var timerTick: () -> Void = {
-        self.getNewBlocks()
-    }
-    
-    private func getNewBlocks() {
+    override func getNewBlocks() {
         endpointMiddlware.getLastBlockNumber(lastBlock: { blockNumber in
             switch (self.lastBlock, blockNumber) {
             // New block not created

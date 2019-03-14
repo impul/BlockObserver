@@ -30,10 +30,6 @@ class BlocksTimer {
         activateTimer()
     }
     
-    @objc func timerMethod() {
-        
-    }
-    
     private func activateTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: updatingInterval, repeats: false, block: {_ in 
             self.tick()
@@ -56,9 +52,8 @@ class BlocksTimer {
                 updatingInterval -= updateValue
             }
         case .normal:
-            print("Do not net update")
+            break
         }
-        print(updatingInterval)
         endTimer()
         activateTimer()
     }

@@ -18,8 +18,7 @@ class BlockchainObserverTests: XCTestCase {
     }
     
     func testDefaultEthereumBlockchainObserver() {
-        let expectaion = expectation(description: "Get block")
         blockchainObserver?.addObserver(for: "0x131a99859a8bfa3251d899f0675607766736ffae", asset: .ethereum)
-        wait(for: [expectaion], timeout: 100)
+        blockchainObserver?.removeObserver(for: "0x131a99859a8bfa3251d899f0675607766736ffae", asset: .ethereum)
     }
 }
