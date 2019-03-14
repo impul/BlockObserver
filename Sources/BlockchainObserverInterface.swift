@@ -23,4 +23,7 @@ public protocol BlockchainObserverInterface {
     
     func observe(_ address: Address)
     func removeObserver(_ address: Address)
+    
+    func startObsering()
+    func pauseObserving()
 }

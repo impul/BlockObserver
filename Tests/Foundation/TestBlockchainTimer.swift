@@ -19,9 +19,10 @@ class  TestBlockchainTimer: XCTestCase {
             tickCount += 1
             timer.updateTimer(update: .normal)
             if tickCount == 3 {
+                timer.pauseTimer()
                 expect.fulfill()
             }
         })
-        wait(for: [expect], timeout: 7)
+        wait(for: [expect], timeout: 10)
     }
 }

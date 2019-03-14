@@ -33,7 +33,7 @@ class DefaultBlockchainObserver: BlockchainObserverInterface {
     
     func observe(_ address: Address) {
         if observedAddresses.isEmpty {
-            timer?.updateTimer(update: .normal)
+            timer?.startTimer()
         }
         observedAddresses.insert(address)
     }
@@ -41,7 +41,19 @@ class DefaultBlockchainObserver: BlockchainObserverInterface {
     func removeObserver(_ address: Address) {
         observedAddresses.remove(address)
         if observedAddresses.isEmpty {
-            timer?.endTimer()
+            timer?.pauseTimer()
         }
+    }
+    
+    func startObsering() {
+        timer?.startTimer()
+    }
+    
+    func pauseObserving() {
+        timer?.pauseTimer()
+    }
+    
+    var isUpdating: Bool {
+        return timer?.isOn ?? false
     }
 }

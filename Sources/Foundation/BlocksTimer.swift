@@ -24,23 +24,35 @@ class BlocksTimer {
     private var updatingInterval: TimeInterval
     private var timer: Timer = Timer()
     
+    public var isOn: Bool
+    
     init(startUpdatingIntervar: TimeInterval = 5 , tick: @escaping (BlocksTimer) -> Void) {
         self.updatingInterval = startUpdatingIntervar
         self.tick = tick
-        activateTimer()
+        self.isOn = true
+        startTimer()
     }
     
     private func activateTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: updatingInterval, repeats: false, block: {_ in 
-            self.tick(self)
+        timer = Timer.scheduledTimer(withTimeInterval: updatingInterval, repeats: false, block: {_ in
+            if self.isOn {
+                self.tick(self)
+            }
         })
     }
     
-    func endTimer() {
+    func startTimer() {
+        self.isOn = true
+        activateTimer()
+    }
+    
+    func pauseTimer() {
+        self.isOn = false
         timer.invalidate()
     }
     
     func updateTimer(update: TickClarify) {
+        if !isOn { return }
         let updateValue = updatingInterval * 0.1
         switch update {
         case .lessOften:
@@ -54,7 +66,7 @@ class BlocksTimer {
         case .normal:
             break
         }
-        endTimer()
+        timer.invalidate()
         activateTimer()
     }
 }
