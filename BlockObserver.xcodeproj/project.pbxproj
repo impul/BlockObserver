@@ -21,6 +21,7 @@
 		344BEC44223AA6FD0091C97C /* BlocksTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BEC43223AA6FD0091C97C /* BlocksTimer.swift */; };
 		344BEC47223ABCE00091C97C /* TestBlockchainTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BEC46223ABCE00091C97C /* TestBlockchainTimer.swift */; };
 		344BEC49223AC2860091C97C /* FakeEthereumMiddlware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BEC48223AC2860091C97C /* FakeEthereumMiddlware.swift */; };
+		344BEC4D223ADCE40091C97C /* RippleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BEC4C223ADCE40091C97C /* RippleEndpoint.swift */; };
 		34C091292239AA53000FAF5C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C091282239AA53000FAF5C /* NetworkManager.swift */; };
 		34C0912B2239AA7F000FAF5C /* NetworkManagerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0912A2239AA7F000FAF5C /* NetworkManagerInterface.swift */; };
 		34C0912D2239AACC000FAF5C /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0912C2239AACC000FAF5C /* RequestProtocol.swift */; };
@@ -74,6 +75,7 @@
 		344BEC43223AA6FD0091C97C /* BlocksTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksTimer.swift; sourceTree = "<group>"; };
 		344BEC46223ABCE00091C97C /* TestBlockchainTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBlockchainTimer.swift; sourceTree = "<group>"; };
 		344BEC48223AC2860091C97C /* FakeEthereumMiddlware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEthereumMiddlware.swift; sourceTree = "<group>"; };
+		344BEC4C223ADCE40091C97C /* RippleEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleEndpoint.swift; sourceTree = "<group>"; };
 		34C091282239AA53000FAF5C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		34C0912A2239AA7F000FAF5C /* NetworkManagerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerInterface.swift; sourceTree = "<group>"; };
 		34C0912C2239AACC000FAF5C /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				344823D7223940D50014B750 /* Ripple.swift */,
+				344BEC4C223ADCE40091C97C /* RippleEndpoint.swift */,
 			);
 			path = Ripple;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				344823CC22392BA40014B750 /* BlockObserver.swift in Sources */,
 				344823DA223943A00014B750 /* DefaultBlockchainObserver.swift in Sources */,
 				344BEC40223A9CA20091C97C /* EthereumTransaction.swift in Sources */,
+				344BEC4D223ADCE40091C97C /* RippleEndpoint.swift in Sources */,
 				34C0912B2239AA7F000FAF5C /* NetworkManagerInterface.swift in Sources */,
 				34C09151223A795A000FAF5C /* EthereumMiddleware.swift in Sources */,
 				344BEC3F223A9C8B0091C97C /* RPCModel.swift in Sources */,
