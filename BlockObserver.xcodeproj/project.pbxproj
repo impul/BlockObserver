@@ -129,8 +129,8 @@
 		344823D4223940700014B750 /* BlockchainObservers */ = {
 			isa = PBXGroup;
 			children = (
-				344823D5223940A40014B750 /* Ethereum.swift */,
-				344823D7223940D50014B750 /* Ripple.swift */,
+				34C0913C223A4843000FAF5C /* Ripple */,
+				34C0913B223A480E000FAF5C /* Ethereum */,
 				344823D9223943A00014B750 /* DefaultBlockchainObserver.swift */,
 			);
 			path = BlockchainObservers;
@@ -181,6 +181,22 @@
 				34C091392239B0DB000FAF5C /* RPC2RequestsTests.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		34C0913B223A480E000FAF5C /* Ethereum */ = {
+			isa = PBXGroup;
+			children = (
+				344823D5223940A40014B750 /* Ethereum.swift */,
+			);
+			path = Ethereum;
+			sourceTree = "<group>";
+		};
+		34C0913C223A4843000FAF5C /* Ripple */ = {
+			isa = PBXGroup;
+			children = (
+				344823D7223940D50014B750 /* Ripple.swift */,
+			);
+			path = Ripple;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
