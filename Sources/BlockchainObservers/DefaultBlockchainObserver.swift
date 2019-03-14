@@ -9,8 +9,8 @@
 import Foundation
 
 class DefaultBlockchainObserver: BlockchainObserverInterface {
-    private weak var delegate: BlockchainObserverDelegate?
-    private var observedAddresses: Set<Address> = []
+    weak var delegate: BlockchainObserverDelegate?
+    var observedAddresses: Set<Address> = []
     
     required init(delegate: BlockchainObserverDelegate) {
         self.delegate = delegate

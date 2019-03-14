@@ -17,7 +17,7 @@ enum EthereumEndpoint: RPC2RequestProtocol {
         case .getCurrentBlock:
             return "eth_blockNumber"
         case .getTransaction:
-            return ""
+            return "eth_getLogs"
         }
     }
     
