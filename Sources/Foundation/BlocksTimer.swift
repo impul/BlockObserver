@@ -34,11 +34,17 @@ class BlocksTimer {
     }
     
     private func activateTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: updatingInterval, repeats: false, block: {_ in
-            if self.isOn {
-                self.tick(self)
-            }
-        })
+        timer = Timer.scheduledTimer(timeInterval: updatingInterval,
+                                     target: self,
+                                     selector: #selector(self.tickAction),
+                                     userInfo: nil,
+                                     repeats: false)
+    }
+    
+    @objc private func tickAction() {
+        if self.isOn {
+            self.tick(self)
+        }
     }
     
     func startTimer() {
