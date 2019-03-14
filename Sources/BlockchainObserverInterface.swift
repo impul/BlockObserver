@@ -10,7 +10,7 @@ import Foundation
 
 public enum TransactionStatus {
     case registered
-    case confirmed(confirmations: UInt64)
+    case confirmed(confirmations: UInt32)
 }
 
 public protocol BlockchainObserverDelegate: class {
@@ -23,4 +23,7 @@ public protocol BlockchainObserverInterface {
     
     func observe(_ address: Address)
     func removeObserver(_ address: Address)
+    
+    func startObsering()
+    func pauseObserving()
 }

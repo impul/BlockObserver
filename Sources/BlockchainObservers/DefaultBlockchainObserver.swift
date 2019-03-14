@@ -9,22 +9,51 @@
 import Foundation
 
 class DefaultBlockchainObserver: BlockchainObserverInterface {
-    private weak var delegate: BlockchainObserverDelegate?
-    private var observedAddresses: Set<Address> = []
+    weak var delegate: BlockchainObserverDelegate?
+    var observedAddresses: Set<Address> = []
+    var timer: BlocksTimer?
     
     required init(delegate: BlockchainObserverDelegate) {
         self.delegate = delegate
+        timer = BlocksTimer(tick: timerTick)
     }
     
+    lazy var timerTick: (BlocksTimer) -> Void = { [weak self] _ in
+        self?.getNewBlocks()
+    }
+    
+    func getNewBlocks() {
+        fatalError("shold override")
+    }
+    
+    // MARK: - BlockchainObserverInterface
     var asset: Asset {
         fatalError("shold override")
     }
     
     func observe(_ address: Address) {
+        if observedAddresses.isEmpty {
+            timer?.startTimer()
+        }
         observedAddresses.insert(address)
     }
     
     func removeObserver(_ address: Address) {
         observedAddresses.remove(address)
+        if observedAddresses.isEmpty {
+            timer?.pauseTimer()
+        }
+    }
+    
+    func startObsering() {
+        timer?.startTimer()
+    }
+    
+    func pauseObserving() {
+        timer?.pauseTimer()
+    }
+    
+    var isUpdating: Bool {
+        return timer?.isOn ?? false
     }
 }
