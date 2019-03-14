@@ -20,11 +20,11 @@ fileprivate enum Defaults {
 }
 
 class BlocksTimer {
-    private var tick: () -> Void
+    private var tick: (BlocksTimer) -> Void
     private var updatingInterval: TimeInterval
     private var timer: Timer = Timer()
     
-    init(startUpdatingIntervar: TimeInterval = 5 , tick: @escaping () -> Void) {
+    init(startUpdatingIntervar: TimeInterval = 5 , tick: @escaping (BlocksTimer) -> Void) {
         self.updatingInterval = startUpdatingIntervar
         self.tick = tick
         activateTimer()
@@ -32,7 +32,7 @@ class BlocksTimer {
     
     private func activateTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: updatingInterval, repeats: false, block: {_ in 
-            self.tick()
+            self.tick(self)
         })
     }
     

@@ -19,6 +19,7 @@
 		344BEC40223A9CA20091C97C /* EthereumTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C09154223A7BB2000FAF5C /* EthereumTransaction.swift */; };
 		344BEC42223A9D4B0091C97C /* RpcEthereumtransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BEC41223A9D4B0091C97C /* RpcEthereumtransactionList.swift */; };
 		344BEC44223AA6FD0091C97C /* BlocksTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BEC43223AA6FD0091C97C /* BlocksTimer.swift */; };
+		344BEC47223ABCE00091C97C /* TestBlockchainTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BEC46223ABCE00091C97C /* TestBlockchainTimer.swift */; };
 		34C091292239AA53000FAF5C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C091282239AA53000FAF5C /* NetworkManager.swift */; };
 		34C0912B2239AA7F000FAF5C /* NetworkManagerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0912A2239AA7F000FAF5C /* NetworkManagerInterface.swift */; };
 		34C0912D2239AACC000FAF5C /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C0912C2239AACC000FAF5C /* RequestProtocol.swift */; };
@@ -70,6 +71,7 @@
 		344823F2223947B10014B750 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		344BEC41223A9D4B0091C97C /* RpcEthereumtransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcEthereumtransactionList.swift; sourceTree = "<group>"; };
 		344BEC43223AA6FD0091C97C /* BlocksTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksTimer.swift; sourceTree = "<group>"; };
+		344BEC46223ABCE00091C97C /* TestBlockchainTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBlockchainTimer.swift; sourceTree = "<group>"; };
 		34C091282239AA53000FAF5C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		34C0912A2239AA7F000FAF5C /* NetworkManagerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerInterface.swift; sourceTree = "<group>"; };
 		34C0912C2239AACC000FAF5C /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				34C0914D223A7140000FAF5C /* TestHex.swift */,
+				344BEC46223ABCE00091C97C /* TestBlockchainTimer.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				34C0913A2239B0DB000FAF5C /* RPC2RequestsTests.swift in Sources */,
 				34C0914E223A7140000FAF5C /* TestHex.swift in Sources */,
 				34C0914B223A5F1E000FAF5C /* BlockchainObserverTests.swift in Sources */,
+				344BEC47223ABCE00091C97C /* TestBlockchainTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
