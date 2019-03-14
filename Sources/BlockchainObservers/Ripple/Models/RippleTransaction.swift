@@ -8,24 +8,24 @@
 
 import Foundation
 
-public class RippleTransactionsResult: Codable {
+public struct RippleTransactionsResult: Codable {
     public var result: String
     public var tx_count: String
     public var ledger: RippleLedger
 }
 
-public class RippleLedger: Codable {
+public struct RippleLedger: Codable {
     public var hash: String
     public var transactions: [RippleTransaction]
 }
 
 
-public class RippleTransaction: Codable {
+public struct RippleTransaction: Codable {
     public var hash: String
     public var tx: RippleTransactionDetail
     
 }
 
-public class RippleTransactionDetail: Codable {
+public struct RippleTransactionDetail: Codable {
     public var Account: String
 }

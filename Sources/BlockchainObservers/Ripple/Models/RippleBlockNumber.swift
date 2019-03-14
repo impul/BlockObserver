@@ -8,10 +8,10 @@
 
 import Foundation
 
-class RippleBlockNumberResponce: Codable {
+struct RippleBlockNumberResponce: Codable {
     var result: RippleBlockNumberResult
 }
 
-class RippleBlockNumberResult: Codable {
+struct RippleBlockNumberResult: Codable {
     var ledger_index: UInt64
 }
