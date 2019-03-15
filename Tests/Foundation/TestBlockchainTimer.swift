@@ -42,16 +42,4 @@ class  TestBlockchainTimer: XCTestCase {
         })
         wait(for: [expect], timeout: 5.5)
     }
-    
-    func testTimerTicks() {
-        let expect = expectation(description: "Timers less often")
-        var tickCount = 0
-        timer = BlocksTimer(startUpdatingIntervar: 1, tick: { timer in
-            if tickCount == 3 {
-                timer.pauseTimer()
-                expect.fulfill()
-            }
-        })
-        wait(for: [expect], timeout: 5.5)
-    }
 }
