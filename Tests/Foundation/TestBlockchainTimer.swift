@@ -17,12 +17,41 @@ class  TestBlockchainTimer: XCTestCase {
         var tickCount = 0
         timer = BlocksTimer(startUpdatingIntervar: 2, tick: { timer in
             tickCount += 1
-            timer.updateTimer(update: .normal)
+            if tickCount == 2 {
+                timer.pauseTimer()
+                timer.startTimer()
+            }
             if tickCount == 3 {
                 timer.pauseTimer()
                 expect.fulfill()
             }
         })
-        wait(for: [expect], timeout: 10)
+        wait(for: [expect], timeout: 7)
+    }
+    
+    func testTimerLessUpdate() {
+        let expect = expectation(description: "Timers less often")
+        var tickCount = 0
+        timer = BlocksTimer(startUpdatingIntervar: 2, tick: { timer in
+            tickCount += 1
+            timer.updateTimer(update: .moreOften)
+            if tickCount == 3 {
+                timer.pauseTimer()
+                expect.fulfill()
+            }
+        })
+        wait(for: [expect], timeout: 5.5)
+    }
+    
+    func testTimerTicks() {
+        let expect = expectation(description: "Timers less often")
+        var tickCount = 0
+        timer = BlocksTimer(startUpdatingIntervar: 1, tick: { timer in
+            if tickCount == 3 {
+                timer.pauseTimer()
+                expect.fulfill()
+            }
+        })
+        wait(for: [expect], timeout: 5.5)
     }
 }

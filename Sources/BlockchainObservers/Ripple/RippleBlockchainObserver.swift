@@ -33,15 +33,12 @@ internal class RippleBlockchainObserver: DefaultBlockchainObserver {
             // First try
             case (nil, let block):
                 self.checkTransactionsInBlocks(from: block, to: block)
-                self.timer?.updateTimer(update: .normal)
             // New block(s) created
             case (let oldBlock?, let newBlock):
                 self.checkTransactionsInBlocks(from: oldBlock, to: newBlock)
                 let newBlocksCount = newBlock - oldBlock
                 if newBlocksCount > 1 {
                     self.timer?.updateTimer(update: .moreOften)
-                } else {
-                    self.timer?.updateTimer(update: .normal)
                 }
             }
             self.lastBlock = blockNumber

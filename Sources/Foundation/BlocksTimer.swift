@@ -11,7 +11,6 @@ import Foundation
 enum TickClarify {
     case moreOften
     case lessOften
-    case normal
 }
 
 fileprivate enum Defaults {
@@ -44,6 +43,7 @@ class BlocksTimer {
     @objc private func tickAction() {
         if self.isOn {
             self.tick(self)
+            restartTimer()
         }
     }
     
@@ -69,9 +69,11 @@ class BlocksTimer {
             if updatingInterval >= Defaults.minUpdateInterval {
                 updatingInterval -= updateValue
             }
-        case .normal:
-            break
         }
+        restartTimer()
+    }
+    
+    func restartTimer() {
         timer.invalidate()
         activateTimer()
     }
