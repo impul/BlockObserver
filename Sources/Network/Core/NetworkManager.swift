@@ -55,29 +55,27 @@ public class NetworkManager: NetworkManagerInterface {
     }
     
     private func handleResponse<SuccessModel: Decodable> (
-                                response: (Data?, Error?),
-                                result: @escaping (NetworkResult<SuccessModel>) -> Void
+        response: (Data?, Error?),
+        result: @escaping (NetworkResult<SuccessModel>) -> Void
         ) {
-        DispatchQueue.main.async {
-            guard let data = response.0 else {
-                guard let error = response.1 else {
-                    result(.failure(.unknownError))
-                    return
-                }
-                result(.failure(NetworkError.defaultError(error)))
+        guard let data = response.0 else {
+            guard let error = response.1 else {
+                result(.failure(.unknownError))
                 return
             }
-            guard let object = try? JSONDecoder().decode(SuccessModel.self, from: data) else {
-                self.handleError(response: data, result: result)
-                return
-            }
-            result(.success(object))
+            result(.failure(NetworkError.defaultError(error)))
+            return
         }
+        guard let object = try? JSONDecoder().decode(SuccessModel.self, from: data) else {
+            self.handleError(response: data, result: result)
+            return
+        }
+        result(.success(object))
     }
     
     private func handleError<SuccessModel: Decodable> (
-                             response: Data,
-                             result: @escaping (NetworkResult<SuccessModel>) -> Void
+        response: Data,
+        result: @escaping (NetworkResult<SuccessModel>) -> Void
         ) {
         let decoder = JSONDecoder()
         guard let failedObject = try? decoder.decode(NetworkError.self, from: response) else {
