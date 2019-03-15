@@ -38,8 +38,20 @@ public class BlockObserver: BlockchainObserverDelegate {
         }
     }
     
-    private func blockchainObservers(for asset: Asset) -> [BlockchainObserverInterface] {
+    public func blockchainObservers(for asset: Asset) -> [BlockchainObserverInterface] {
         return blockchainsObservers.filter({ $0.asset == asset })
+    }
+    
+    public func stopObservers() {
+        blockchainsObservers.forEach {
+            $0.pauseObserving()
+        }
+    }
+    
+    public func startObservers() {
+        blockchainsObservers.forEach {
+            $0.startObsering()
+        }
     }
     
     // MARK: - BlockchainObserverDelegate

@@ -10,36 +10,37 @@
 import XCTest
 
 class  TestBlockchainTimer: XCTestCase {
-    private var timer: BlocksTimer?
+    private var timer1: BlocksTimer?
+    private var timer2: BlocksTimer?
 
     func testTimer() {
         let expect = expectation(description: "Timers tick")
         var tickCount = 0
-        timer = BlocksTimer(startUpdatingIntervar: 2, tick: { timer in
+        timer1 = BlocksTimer(startUpdatingIntervar: 2, tick: { timer in
             tickCount += 1
             if tickCount == 2 {
                 timer.pauseTimer()
                 timer.startTimer()
             }
             if tickCount == 3 {
-                timer.pauseTimer()
                 expect.fulfill()
+                timer.pauseTimer()
             }
         })
-        wait(for: [expect], timeout: 7)
+        wait(for: [expect], timeout: 10)
     }
     
     func testTimerLessUpdate() {
         let expect = expectation(description: "Timers less often")
         var tickCount = 0
-        timer = BlocksTimer(startUpdatingIntervar: 2, tick: { timer in
+        timer2 = BlocksTimer(startUpdatingIntervar: 2, tick: { timer in
             tickCount += 1
-            timer.updateTimer(update: .moreOften)
+            self.timer2?.updateTimer(update: .moreOften)
             if tickCount == 3 {
-                timer.pauseTimer()
                 expect.fulfill()
+                timer.pauseTimer()
             }
         })
-        wait(for: [expect], timeout: 5.5)
+        wait(for: [expect], timeout: 10)
     }
 }

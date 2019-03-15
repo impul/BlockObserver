@@ -29,21 +29,16 @@ class BlocksTimer {
         self.updatingInterval = startUpdatingIntervar
         self.tick = tick
         self.isOn = true
-        startTimer()
+        activateTimer()
     }
     
     private func activateTimer() {
-        if #available(OSX 10.12, *) {
-            timer = Timer.scheduledTimer(withTimeInterval: updatingInterval, repeats: false, block: {_ in
-                self.tickAction()
-            })
-        } else {
-            timer = Timer.scheduledTimer(timeInterval: updatingInterval,
-                                         target: self,
-                                         selector: #selector(self.tickAction),
-                                         userInfo: nil,
-                                         repeats: false)
-        }
+        self.timer = Timer.scheduledTimer(timeInterval: self.updatingInterval,
+                                          target: self,
+                                          selector: #selector(self.tickAction),
+                                          userInfo: nil,
+                                          repeats: false)
+        RunLoop.current.add(timer, forMode: .common)
     }
     
     @objc public func tickAction() {
