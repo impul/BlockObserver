@@ -18,7 +18,7 @@ class DefaultBlockchainObserver: BlockchainObserverInterface {
         timer = BlocksTimer(tick: timerTick)
     }
     
-    lazy var timerTick: (BlocksTimer) -> Void = { [weak self] _ in
+    lazy var timerTick: () -> Void = { [weak self] in
         self?.getNewBlocks()
     }
     

@@ -19,47 +19,34 @@ fileprivate enum Defaults {
 }
 
 class BlocksTimer {
-    private var tick: (BlocksTimer) -> Void
+    private var tick: () -> Void
     private var updatingInterval: TimeInterval
-    private var timer: Timer = Timer()
+    private var timer: DispatchSourceTimer?
     
-    public var isOn: Bool
-    
-    init(startUpdatingIntervar: TimeInterval = 5 , tick: @escaping (BlocksTimer) -> Void) {
+    init(startUpdatingIntervar: TimeInterval = 3 , tick: @escaping () -> Void) {
         self.updatingInterval = startUpdatingIntervar
         self.tick = tick
-        self.isOn = true
         activateTimer()
     }
     
     private func activateTimer() {
-        self.timer = Timer.scheduledTimer(timeInterval: self.updatingInterval,
-                                          target: self,
-                                          selector: #selector(self.tickAction),
-                                          userInfo: nil,
-                                          repeats: false)
-        RunLoop.current.add(timer, forMode: .common)
-    }
-    
-    @objc public func tickAction() {
-        if self.isOn {
-            self.tick(self)
-            restartTimer()
-        }
+        timer = DispatchSource.makeTimerSource()
+        timer?.schedule(deadline: .now() + self.updatingInterval, repeating: self.updatingInterval)
+        timer?.setEventHandler(handler: { [weak self] in
+            self?.tick()
+        })
+        timer?.resume()
     }
     
     func startTimer() {
-        self.isOn = true
-        activateTimer()
+        restartTimer()
     }
     
     func pauseTimer() {
-        self.isOn = false
-        timer.invalidate()
+        timer?.cancel()
     }
     
     func updateTimer(update: TickClarify) {
-        if !isOn { return }
         let updateValue = updatingInterval * 0.1
         switch update {
         case .lessOften:
@@ -74,8 +61,12 @@ class BlocksTimer {
         restartTimer()
     }
     
+    var isOn: Bool {
+        return !(timer?.isCancelled ?? true)
+    }
+    
     func restartTimer() {
-        timer.invalidate()
+        timer?.cancel()
         activateTimer()
     }
 }
