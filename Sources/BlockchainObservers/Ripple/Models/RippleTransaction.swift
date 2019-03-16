@@ -10,12 +10,12 @@ import Foundation
 
 public struct RippleTransactionsResult: Codable {
     public var result: String
-    public var tx_count: String
     public var ledger: RippleLedger
 }
 
 public struct RippleLedger: Codable {
-    public var hash: String
+    public var ledger_hash: String
+    public var tx_count: String
     public var transactions: [RippleTransaction]
 }
 
