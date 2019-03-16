@@ -10,14 +10,14 @@
 import XCTest
 
 class FakeEthereumMiddlware: EthereumMiddlewareInterface {
-    private var currentBlock: UInt32 = 1
+    private var currentBlock: UInt64 = 1
     
-    func getLastBlockNumber(lastBlock: @escaping (UInt32) -> Void) {
+    func getLastBlockNumber(lastBlock: @escaping (UInt64) -> Void) {
         lastBlock(currentBlock)
         currentBlock += 1
     }
     
-    func getTransactionInBlockRange(from: UInt32, to: UInt32, transactions: @escaping ([EthereumTransaction]) -> Void) {
+    func getTransactionInBlockRange(from: UInt64, to: UInt64, transactions: @escaping ([EthereumTransaction]) -> Void) {
         transactions([EthereumTransaction(type: "test", blockHash: "test", transactionHash: "test", transactionIndex: "test", topics: ["test"], blockNumber: "test", address: "test", transactionLogIndex: "test", logIndex: "test", removed: false, data: "test")])
     }
 }

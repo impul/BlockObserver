@@ -16,7 +16,7 @@ class TestHex: XCTestCase {
         testNumberForCovert(decimal: 0, hex: 0x0, hexString: "0x0", hexStringShort: "0")
     }
     
-    func testNumberForCovert(decimal: UInt32, hex: UInt32, hexString: String, hexStringShort: String) {
+    func testNumberForCovert(decimal: UInt64, hex: UInt64, hexString: String, hexStringShort: String) {
         XCTAssertEqual(decimal.hexString, hexString)
         XCTAssertEqual(hex.hexString, hexString)
         XCTAssertEqual(hexString.hexToInt, decimal)
