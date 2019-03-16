@@ -14,6 +14,9 @@ public class BlockObserver: BlockchainObserverDelegate {
     private var logger: Logger
     private var buffer: TransactionsBufferInterfce
     
+    /// Easy init way
+    ///
+    /// - Parameter assets: array of assets that you need
     public convenience init(assets: [Asset]) {
         self.init(blockchainsObservers: assets.map {
             return $0.defaultBlockchainObserver
@@ -21,6 +24,13 @@ public class BlockObserver: BlockchainObserverDelegate {
            logger: PrintLogger())
     }
     
+    /// Init with blockchain interfces
+    /// Important! BlockchainObserverInterface should create with required init
+    ///
+    /// - Parameters:
+    ///   - blockchainsObservers: array with blockchain observer types
+    ///   - buffer: responsible for collections transactions
+    ///   - logger: log new transactions
     public init(blockchainsObservers: [BlockchainObserverInterface.Type],
                 buffer: TransactionsBufferInterfce,
                 logger: Logger) {
@@ -31,6 +41,12 @@ public class BlockObserver: BlockchainObserverDelegate {
         }
     }
     
+    /// Init with custom blockchain observer realizations
+    ///
+    /// - Parameters:
+    ///   - blockchainsObservers: array with blockchain observer objects
+    ///   - buffer: responsible for collections transactions
+    ///   - logger: log new transactions
     public init(blockchainsObservers: [BlockchainObserverInterface],
                 buffer: TransactionsBufferInterfce,
                 logger: Logger) {
