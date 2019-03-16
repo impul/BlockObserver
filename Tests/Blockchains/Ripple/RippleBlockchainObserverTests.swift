@@ -30,7 +30,9 @@ class RippleBlockchainObserverTests: XCTestCase, BlockchainObserverDelegate {
     // MARK: - BlockchainObserverDelegate
     
     func didReceive(newStatus: TransactionStatus, onObserver: BlockchainObserverInterface, address: Address, txId: String) {
+        
         XCTAssertEqual(account, account)
+        
         rippleBlockchain?.pauseObserving()
         receivingTransactionsExpectation?.fulfill()
     }

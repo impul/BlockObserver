@@ -24,17 +24,24 @@ class TestDefaultBlockchainObserver: XCTestCase, BlockchainObserverDelegate {
     func testDefaultEthereumBlockchainObserver() {
         defaultBlockchain?.observe(address0)
         defaultBlockchain?.observe(address0)
+        // Confirm that added only one address because addresses are same
         XCTAssertEqual(defaultBlockchain?.observedAddresses.count, 1)
         XCTAssertEqual(defaultBlockchain?.isUpdating, true)
+
         defaultBlockchain?.removeObserver(address0)
+        // Confirm that adress removed
         XCTAssertEqual(defaultBlockchain?.observedAddresses.count, 0)
         XCTAssertEqual(defaultBlockchain?.isUpdating, false)
+        
         defaultBlockchain?.removeObserver(address0)
+        // Confirm that oserved addresses are empy after delete
         XCTAssertEqual(defaultBlockchain?.observedAddresses.count, 0)
         XCTAssertEqual(defaultBlockchain?.isUpdating, false)
+        
         defaultBlockchain?.observe(address0)
         defaultBlockchain?.observe(address1)
         defaultBlockchain?.observe(address2)
+        // Confirm that addresses are adding
         XCTAssertEqual(defaultBlockchain?.observedAddresses.count, 3)
         XCTAssertEqual(defaultBlockchain?.isUpdating, true)
     }

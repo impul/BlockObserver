@@ -45,17 +45,7 @@ class BlocksTimer: BlocksTimerInterface {
     }
     
     func updateTimer(update: TickClarify) {
-        let updateValue = updatingInterval * clarifyCoefficient
-        switch update {
-        case .lessOften:
-            if updatingInterval <= Defaults.maxUpdateIntervar {
-                updatingInterval += updateValue
-            }
-        case .moreOften:
-            if updatingInterval >= Defaults.minUpdateInterval {
-                updatingInterval -= updateValue
-            }
-        }
+        updatingInterval = update.apply(interval: updatingInterval, coefficient: clarifyCoefficient)
         startTimer()
     }
     

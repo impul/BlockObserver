@@ -47,14 +47,51 @@ class  TestBlockchainTimer: XCTestCase {
         wait(for: [expect], timeout: 10)
     }
     
-    func testTimerClariffing() {
+    func testTimerClariffingToLessOftenUpdate() {
         // 1 -> 1.2 -> 1.44
         let expect = expectation(description: "Timers less often")
         timer = BlocksTimer.init(updatingInterval: 1, clarifyCoefficient: 0.2) {
             self.tickCount += 1
             self.timer?.updateTimer(update: .lessOften)
             if self.tickCount == 2 {
+                
                 XCTAssertEqual(self.timer?.currentUpdateInterval, 1.44)
+                
+                expect.fulfill()
+                self.timer?.pauseTimer()
+            }
+        }
+        wait(for: [expect], timeout: 8)
+    }
+    
+    func testTimerClariffingToMoreOftenUpdate() {
+        // 2 -> 1.6 -> 1.28
+        let expect = expectation(description: "Timers less often")
+        timer = BlocksTimer.init(updatingInterval: 2, clarifyCoefficient: 0.2) {
+            self.tickCount += 1
+            self.timer?.updateTimer(update: .moreOften)
+            if self.tickCount == 2 {
+                
+                XCTAssertEqual(self.timer?.currentUpdateInterval, 1.28)
+                
+                expect.fulfill()
+                self.timer?.pauseTimer()
+            }
+        }
+        wait(for: [expect], timeout: 5)
+    }
+    
+    func testTimerClariffingToMoreOftenUpdateExtremum() {
+        // 1 -> 1
+        // Updates should no faster than 1 update per second
+        let expect = expectation(description: "Timers less often")
+        timer = BlocksTimer.init(updatingInterval: 1, clarifyCoefficient: 0.2) {
+            self.tickCount += 1
+            self.timer?.updateTimer(update: .moreOften)
+            if self.tickCount == 1 {
+
+                XCTAssertEqual(self.timer?.currentUpdateInterval, 1)
+                
                 expect.fulfill()
                 self.timer?.pauseTimer()
             }

@@ -23,25 +23,32 @@ class EthereumMiddlwareTests: XCTestCase {
     
     func testEthereumMiddlewareNewBlockSuccesResult() {
         let expect = expectation(description: "Succes request")
+        
         let modelString = "{\"jsonrpc\":\"2.0\",\"id\":0, \"result\": \"0x1\"}"
         let data = Data(modelString.utf8)
         let networkManager = FakeSuccessNetworkManager(model: data)
         ethereumMiddlware = EthereumMiddleware(networkManager: networkManager)
         ethereumMiddlware?.getLastBlockNumber(lastBlock: { (number) in
+            
             XCTAssertEqual(number, 1)
+            
             expect.fulfill()
         })
+        
         wait(for: [expect], timeout: 1)
     }
     
     func testEthereumMiddlewareTransactionsSuccesResult() {
         let expect = expectation(description: "Succes request")
+        
         let modelString = "{\"jsonrpc\":\"2.0\",\"id\":0, \"result\": [\(transaction)]}"
         let data = Data(modelString.utf8)
         let networkManager = FakeSuccessNetworkManager(model: data)
         ethereumMiddlware = EthereumMiddleware(networkManager: networkManager)
         ethereumMiddlware?.getTransactionInBlockRange(from: 1, to: 1, transactions: { (transactions) in
+            
             XCTAssertEqual(transactions.count , 1)
+            
             expect.fulfill()
         })
         

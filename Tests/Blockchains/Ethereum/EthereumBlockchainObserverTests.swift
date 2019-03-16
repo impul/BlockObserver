@@ -30,7 +30,9 @@ class BlockchainObserverTests: XCTestCase, BlockchainObserverDelegate {
     // MARK: - BlockchainObserverDelegate
     
     func didReceive(newStatus: TransactionStatus, onObserver: BlockchainObserverInterface, address: Address, txId: String) {
+        
         XCTAssertEqual(address, address)
+        
         ethereumBlockchain?.pauseObserving()
         receivingTransactionsExpectation?.fulfill()
     }

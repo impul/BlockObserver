@@ -118,7 +118,6 @@
 		OBJ_433 /* FakeRippleMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* FakeRippleMiddleware.swift */; };
 		OBJ_434 /* RippleBlockchainObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* RippleBlockchainObserverTests.swift */; };
 		OBJ_435 /* TestDefaultBlockchainObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* TestDefaultBlockchainObserver.swift */; };
-		OBJ_436 /* Codable+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* Codable+Data.swift */; };
 		OBJ_437 /* TestBlockchainTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* TestBlockchainTimer.swift */; };
 		OBJ_438 /* TestHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* TestHex.swift */; };
 		OBJ_439 /* TransactionsBufferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* TransactionsBufferTests.swift */; };
@@ -1045,7 +1044,6 @@
 		OBJ_63 /* FakeRippleMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRippleMiddleware.swift; sourceTree = "<group>"; };
 		OBJ_64 /* RippleBlockchainObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleBlockchainObserverTests.swift; sourceTree = "<group>"; };
 		OBJ_65 /* TestDefaultBlockchainObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDefaultBlockchainObserver.swift; sourceTree = "<group>"; };
-		OBJ_67 /* Codable+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Data.swift"; sourceTree = "<group>"; };
 		OBJ_68 /* TestBlockchainTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBlockchainTimer.swift; sourceTree = "<group>"; };
 		OBJ_69 /* TestHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHex.swift; sourceTree = "<group>"; };
 		OBJ_70 /* TransactionsBufferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsBufferTests.swift; sourceTree = "<group>"; };
@@ -1816,7 +1814,7 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1825,7 +1823,6 @@
 				OBJ_75 /* Dependencies */,
 				OBJ_249 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_52 /* Error */ = {
@@ -1880,7 +1877,6 @@
 		OBJ_66 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_67 /* Codable+Data.swift */,
 				OBJ_68 /* TestBlockchainTimer.swift */,
 				OBJ_69 /* TestHex.swift */,
 				OBJ_70 /* TransactionsBufferTests.swift */,
@@ -2472,7 +2468,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_249 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2602,7 +2598,6 @@
 				OBJ_433 /* FakeRippleMiddleware.swift in Sources */,
 				OBJ_434 /* RippleBlockchainObserverTests.swift in Sources */,
 				OBJ_435 /* TestDefaultBlockchainObserver.swift in Sources */,
-				OBJ_436 /* Codable+Data.swift in Sources */,
 				OBJ_437 /* TestBlockchainTimer.swift in Sources */,
 				3457A204223D779C00D54283 /* TestLogger.swift in Sources */,
 				OBJ_438 /* TestHex.swift in Sources */,
