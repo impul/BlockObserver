@@ -8,24 +8,19 @@
 
 import Foundation
 
-enum TickClarify {
-    case moreOften
-    case lessOften
-}
-
 fileprivate enum Defaults {
     static var minUpdateInterval: TimeInterval = 1
     static var maxUpdateIntervar: TimeInterval = 60
 }
 
-class BlocksTimer {
+class BlocksTimer: BlocksTimerInterface {
     private let tick: () -> Void
-    private let clarifyCoefficient: Double
+    private var clarifyCoefficient: Double
     private var updatingInterval: TimeInterval
     private var timer: DispatchSourceTimer?
     
-    init(startUpdatingIntervar: TimeInterval = 3, clarifyCoefficient: Double = 0.1, tick: @escaping () -> Void) {
-        self.updatingInterval = startUpdatingIntervar
+    public init(updatingInterval: TimeInterval = 3, clarifyCoefficient: Double = 0.1, tick: @escaping () -> Void) {
+        self.updatingInterval = updatingInterval
         self.tick = tick
         self.clarifyCoefficient = clarifyCoefficient
         activateTimer()
@@ -41,7 +36,8 @@ class BlocksTimer {
     }
     
     func startTimer() {
-        restartTimer()
+        timer?.cancel()
+        activateTimer()
     }
     
     func pauseTimer() {
@@ -60,16 +56,11 @@ class BlocksTimer {
                 updatingInterval -= updateValue
             }
         }
-        restartTimer()
+        startTimer()
     }
     
     var isOn: Bool {
         return !(timer?.isCancelled ?? true)
-    }
-    
-    func restartTimer() {
-        timer?.cancel()
-        activateTimer()
     }
     
     #if DEBUG

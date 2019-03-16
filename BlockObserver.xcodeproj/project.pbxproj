@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		34482459223D373B0014B750 /* TransactionsBufferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34482457223D36CE0014B750 /* TransactionsBufferTests.swift */; };
+		34482460223D47EC0014B750 /* BlockTimerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3448245A223D46250014B750 /* BlockTimerInterface.swift */; };
+		34482461223D47F10014B750 /* BlocksTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* BlocksTimer.swift */; };
 		OBJ_263 /* Async+NIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* Async+NIO.swift */; };
 		OBJ_264 /* AsyncError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* AsyncError.swift */; };
 		OBJ_265 /* Collection+Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* Collection+Future.swift */; };
@@ -79,7 +81,6 @@
 		OBJ_352 /* RippleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* RippleEndpoint.swift */; };
 		OBJ_353 /* RippleMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* RippleMiddleware.swift */; };
 		OBJ_354 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* Constants.swift */; };
-		OBJ_355 /* BlocksTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* BlocksTimer.swift */; };
 		OBJ_356 /* Numbers+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Numbers+Hex.swift */; };
 		OBJ_357 /* TransactionsBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* TransactionsBuffer.swift */; };
 		OBJ_358 /* TransactionsBufferInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* TransactionsBufferInterface.swift */; };
@@ -876,6 +877,7 @@
 
 /* Begin PBXFileReference section */
 		34482457223D36CE0014B750 /* TransactionsBufferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsBufferTests.swift; sourceTree = "<group>"; };
+		3448245A223D46250014B750 /* BlockTimerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTimerInterface.swift; sourceTree = "<group>"; };
 		"BlockObserver::BlockObserver::Product" /* BlockObserver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BlockObserver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"BlockObserver::BlockObserverTests::Product" /* BlockObserverTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlockObserverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Console::Logging::Product" /* Logging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Logging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1269,6 +1271,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3448245C223D462B0014B750 /* BlockTimer */ = {
+			isa = PBXGroup;
+			children = (
+				3448245A223D46250014B750 /* BlockTimerInterface.swift */,
+				OBJ_29 /* BlocksTimer.swift */,
+			);
+			path = BlockTimer;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* BlockchainObservers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1694,7 +1705,7 @@
 		OBJ_28 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_29 /* BlocksTimer.swift */,
+				3448245C223D462B0014B750 /* BlockTimer */,
 				OBJ_30 /* Extensions */,
 				OBJ_32 /* TransactionsBuffer */,
 			);
@@ -2517,14 +2528,15 @@
 				OBJ_345 /* EthereumMiddleware.swift in Sources */,
 				OBJ_346 /* EthereumTransaction.swift in Sources */,
 				OBJ_347 /* RpcCurrentBlock.swift in Sources */,
+				34482460223D47EC0014B750 /* BlockTimerInterface.swift in Sources */,
 				OBJ_348 /* RpcEthereumtransactionList.swift in Sources */,
 				OBJ_349 /* RippleBlockNumber.swift in Sources */,
 				OBJ_350 /* RippleTransaction.swift in Sources */,
 				OBJ_351 /* RippleBlockchainObserver.swift in Sources */,
 				OBJ_352 /* RippleEndpoint.swift in Sources */,
 				OBJ_353 /* RippleMiddleware.swift in Sources */,
+				34482461223D47F10014B750 /* BlocksTimer.swift in Sources */,
 				OBJ_354 /* Constants.swift in Sources */,
-				OBJ_355 /* BlocksTimer.swift in Sources */,
 				OBJ_356 /* Numbers+Hex.swift in Sources */,
 				OBJ_357 /* TransactionsBuffer.swift in Sources */,
 				OBJ_358 /* TransactionsBufferInterface.swift in Sources */,

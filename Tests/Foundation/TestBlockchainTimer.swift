@@ -20,7 +20,7 @@ class  TestBlockchainTimer: XCTestCase {
 
     func testTimer() {
         let expect = expectation(description: "Timers tick")
-        timer = BlocksTimer(startUpdatingIntervar: 2, tick: {
+        timer = BlocksTimer(updatingInterval: 2, tick: {
             self.tickCount += 1
             if self.tickCount == 2 {
                 self.timer?.pauseTimer()
@@ -36,7 +36,7 @@ class  TestBlockchainTimer: XCTestCase {
     
     func testTimerLessUpdate() {
         let expect = expectation(description: "Timers less often")
-        timer = BlocksTimer(startUpdatingIntervar: 2, tick: {
+        timer = BlocksTimer(updatingInterval: 2, tick: {
             self.tickCount += 1
             self.timer?.updateTimer(update: .moreOften)
             if self.tickCount == 3 {
@@ -50,7 +50,7 @@ class  TestBlockchainTimer: XCTestCase {
     func testTimerClariffing() {
         // 1 -> 1.2 -> 1.44
         let expect = expectation(description: "Timers less often")
-        timer = BlocksTimer.init(startUpdatingIntervar: 1, clarifyCoefficient: 0.2) {
+        timer = BlocksTimer.init(updatingInterval: 1, clarifyCoefficient: 0.2) {
             self.tickCount += 1
             self.timer?.updateTimer(update: .lessOften)
             if self.tickCount == 2 {
@@ -59,6 +59,6 @@ class  TestBlockchainTimer: XCTestCase {
                 self.timer?.pauseTimer()
             }
         }
-        wait(for: [expect], timeout: 199)
+        wait(for: [expect], timeout: 5)
     }
 }

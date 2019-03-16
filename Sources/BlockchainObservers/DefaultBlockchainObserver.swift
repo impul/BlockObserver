@@ -46,7 +46,7 @@ class DefaultBlockchainObserver: BlockchainObserverInterface {
     }
     
     func startObsering() {
-        timer?.restartTimer()
+        timer?.startTimer()
     }
     
     func pauseObserving() {
