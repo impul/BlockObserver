@@ -19,13 +19,15 @@ fileprivate enum Defaults {
 }
 
 class BlocksTimer {
-    private var tick: () -> Void
+    private let tick: () -> Void
+    private let clarifyCoefficient: Double
     private var updatingInterval: TimeInterval
     private var timer: DispatchSourceTimer?
     
-    init(startUpdatingIntervar: TimeInterval = 3 , tick: @escaping () -> Void) {
+    init(startUpdatingIntervar: TimeInterval = 3, clarifyCoefficient: Double = 0.1, tick: @escaping () -> Void) {
         self.updatingInterval = startUpdatingIntervar
         self.tick = tick
+        self.clarifyCoefficient = clarifyCoefficient
         activateTimer()
     }
     
@@ -47,7 +49,7 @@ class BlocksTimer {
     }
     
     func updateTimer(update: TickClarify) {
-        let updateValue = updatingInterval * 0.1
+        let updateValue = updatingInterval * clarifyCoefficient
         switch update {
         case .lessOften:
             if updatingInterval <= Defaults.maxUpdateIntervar {
@@ -69,4 +71,10 @@ class BlocksTimer {
         timer?.cancel()
         activateTimer()
     }
+    
+    #if DEBUG
+    var currentUpdateInterval: TimeInterval {
+        return updatingInterval
+    }
+    #endif
 }

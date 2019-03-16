@@ -10,21 +10,25 @@
 import XCTest
 
 class  TestBlockchainTimer: XCTestCase {
-    private var timer1: BlocksTimer?
-    private var timer2: BlocksTimer?
+    private var timer: BlocksTimer?
+    private var tickCount: Int = 0
+    
+    override func setUp() {
+        timer = nil
+        tickCount = 0
+    }
 
     func testTimer() {
         let expect = expectation(description: "Timers tick")
-        var tickCount = 0
-        timer1 = BlocksTimer(startUpdatingIntervar: 2, tick: {
-            tickCount += 1
-            if tickCount == 2 {
-                self.timer1?.pauseTimer()
-                self.timer1?.startTimer()
+        timer = BlocksTimer(startUpdatingIntervar: 2, tick: {
+            self.tickCount += 1
+            if self.tickCount == 2 {
+                self.timer?.pauseTimer()
+                self.timer?.startTimer()
             }
-            if tickCount == 3 {
+            if self.tickCount == 3 {
                 expect.fulfill()
-                self.timer1?.pauseTimer()
+                self.timer?.pauseTimer()
             }
         })
         wait(for: [expect], timeout: 10)
@@ -32,15 +36,29 @@ class  TestBlockchainTimer: XCTestCase {
     
     func testTimerLessUpdate() {
         let expect = expectation(description: "Timers less often")
-        var tickCount = 0
-        timer2 = BlocksTimer(startUpdatingIntervar: 2, tick: {
-            tickCount += 1
-            self.timer2?.updateTimer(update: .moreOften)
-            if tickCount == 3 {
+        timer = BlocksTimer(startUpdatingIntervar: 2, tick: {
+            self.tickCount += 1
+            self.timer?.updateTimer(update: .moreOften)
+            if self.tickCount == 3 {
                 expect.fulfill()
-                self.timer2?.pauseTimer()
+                self.timer?.pauseTimer()
             }
         })
         wait(for: [expect], timeout: 10)
+    }
+    
+    func testTimerClariffing() {
+        // 1 -> 1.2 -> 1.44
+        let expect = expectation(description: "Timers less often")
+        timer = BlocksTimer.init(startUpdatingIntervar: 1, clarifyCoefficient: 0.2) {
+            self.tickCount += 1
+            self.timer?.updateTimer(update: .lessOften)
+            if self.tickCount == 2 {
+                XCTAssertEqual(self.timer?.currentUpdateInterval, 1.44)
+                expect.fulfill()
+                self.timer?.pauseTimer()
+            }
+        }
+        wait(for: [expect], timeout: 199)
     }
 }
