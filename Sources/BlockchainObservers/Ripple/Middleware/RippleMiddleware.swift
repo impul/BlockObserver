@@ -10,11 +10,6 @@ import Foundation
 
 fileprivate var rippleRestUrl = "https://data.ripple.com/v2/"
 
-public protocol RippleMiddlewareInterface {
-    func getLastBlockNumber(lastBlock: @escaping (UInt64) -> Void)
-    func getTransactionInBlockRange(byBlock: UInt64, transactions: @escaping ([RippleTransaction]) -> Void)
-}
-
 public class RippleMiddleware: RippleMiddlewareInterface {
     private let rippleRpcNetwork: NetworkManagerInterface
     private let rippleRestNetwork: NetworkManagerInterface

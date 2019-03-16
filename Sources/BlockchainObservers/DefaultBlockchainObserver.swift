@@ -11,11 +11,16 @@ import Foundation
 class DefaultBlockchainObserver: BlockchainObserverInterface {
     weak var delegate: BlockchainObserverDelegate?
     var observedAddresses: Set<Address> = []
-    var timer: BlocksTimer?
+    var timer: BlocksTimerInterface?
     
-    required init(delegate: BlockchainObserverDelegate) {
+    required public init(delegate: BlockchainObserverDelegate) {
         self.delegate = delegate
-        timer = BlocksTimer(tick: timerTick)
+        self.timer = BlocksTimer(tick: timerTick)
+    }
+    
+    public init(delegate: BlockchainObserverDelegate, timer: BlocksTimerInterface) {
+        self.delegate = delegate
+        self.timer = timer
     }
     
     lazy var timerTick: () -> Void = { [weak self] in

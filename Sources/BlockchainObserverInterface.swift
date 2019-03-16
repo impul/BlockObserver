@@ -10,7 +10,7 @@ import Foundation
 
 public enum TransactionStatus {
     case registered
-    case confirmed(confirmations: UInt32)
+    case confirmed(confirmations: UInt64)
 }
 
 public protocol BlockchainObserverDelegate: class {

@@ -10,7 +10,7 @@ import Foundation
 
 internal class EthereumBlockchainObserver: DefaultBlockchainObserver {
     override var asset: Asset { return .ethereum }
-    private var lastBlock: UInt32?
+    private var lastBlock: UInt64?
     
     let endpointMiddlware: EthereumMiddlewareInterface
     
@@ -45,7 +45,7 @@ internal class EthereumBlockchainObserver: DefaultBlockchainObserver {
         })
     }
     
-    private func checkTransactionsInBlocks(from: UInt32, to: UInt32) {
+    private func checkTransactionsInBlocks(from: UInt64, to: UInt64) {
         endpointMiddlware.getTransactionInBlockRange(from: from, to: to) { (transactions) in
             transactions.filter({ (tx) -> Bool in
                 let isIncomingEthTransaction = self.observedAddresses.contains(tx.address)

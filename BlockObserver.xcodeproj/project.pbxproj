@@ -24,6 +24,8 @@
 		34482459223D373B0014B750 /* TransactionsBufferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34482457223D36CE0014B750 /* TransactionsBufferTests.swift */; };
 		34482460223D47EC0014B750 /* BlockTimerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3448245A223D46250014B750 /* BlockTimerInterface.swift */; };
 		34482461223D47F10014B750 /* BlocksTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* BlocksTimer.swift */; };
+		34482466223D4E330014B750 /* EthereumMiddlewareInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34482463223D4E100014B750 /* EthereumMiddlewareInterface.swift */; };
+		3448246D223D4F010014B750 /* RippleMiddlewareInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3448246C223D4F010014B750 /* RippleMiddlewareInterface.swift */; };
 		OBJ_263 /* Async+NIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* Async+NIO.swift */; };
 		OBJ_264 /* AsyncError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* AsyncError.swift */; };
 		OBJ_265 /* Collection+Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* Collection+Future.swift */; };
@@ -878,6 +880,8 @@
 /* Begin PBXFileReference section */
 		34482457223D36CE0014B750 /* TransactionsBufferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsBufferTests.swift; sourceTree = "<group>"; };
 		3448245A223D46250014B750 /* BlockTimerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTimerInterface.swift; sourceTree = "<group>"; };
+		34482463223D4E100014B750 /* EthereumMiddlewareInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumMiddlewareInterface.swift; sourceTree = "<group>"; };
+		3448246C223D4F010014B750 /* RippleMiddlewareInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleMiddlewareInterface.swift; sourceTree = "<group>"; };
 		"BlockObserver::BlockObserver::Product" /* BlockObserver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BlockObserver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"BlockObserver::BlockObserverTests::Product" /* BlockObserverTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlockObserverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Console::Logging::Product" /* Logging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Logging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1280,6 +1284,26 @@
 			path = BlockTimer;
 			sourceTree = "<group>";
 		};
+		34482462223D4DD30014B750 /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_14 /* EthereumEndpoint.swift */,
+				OBJ_15 /* EthereumMiddleware.swift */,
+				34482463223D4E100014B750 /* EthereumMiddlewareInterface.swift */,
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
+		34482469223D4EDB0014B750 /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_25 /* RippleEndpoint.swift */,
+				OBJ_26 /* RippleMiddleware.swift */,
+				3448246C223D4F010014B750 /* RippleMiddlewareInterface.swift */,
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* BlockchainObservers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1293,9 +1317,8 @@
 		OBJ_12 /* Ethereum */ = {
 			isa = PBXGroup;
 			children = (
+				34482462223D4DD30014B750 /* Middleware */,
 				OBJ_13 /* EthereumBlockchainObserver.swift */,
-				OBJ_14 /* EthereumEndpoint.swift */,
-				OBJ_15 /* EthereumMiddleware.swift */,
 				OBJ_16 /* Models */,
 			);
 			path = Ethereum;
@@ -1473,10 +1496,9 @@
 		OBJ_20 /* Ripple */ = {
 			isa = PBXGroup;
 			children = (
+				34482469223D4EDB0014B750 /* Middleware */,
 				OBJ_21 /* Models */,
 				OBJ_24 /* RippleBlockchainObserver.swift */,
-				OBJ_25 /* RippleEndpoint.swift */,
-				OBJ_26 /* RippleMiddleware.swift */,
 			);
 			path = Ripple;
 			sourceTree = "<group>";
@@ -2533,6 +2555,7 @@
 				OBJ_349 /* RippleBlockNumber.swift in Sources */,
 				OBJ_350 /* RippleTransaction.swift in Sources */,
 				OBJ_351 /* RippleBlockchainObserver.swift in Sources */,
+				34482466223D4E330014B750 /* EthereumMiddlewareInterface.swift in Sources */,
 				OBJ_352 /* RippleEndpoint.swift in Sources */,
 				OBJ_353 /* RippleMiddleware.swift in Sources */,
 				34482461223D47F10014B750 /* BlocksTimer.swift in Sources */,
@@ -2540,6 +2563,7 @@
 				OBJ_356 /* Numbers+Hex.swift in Sources */,
 				OBJ_357 /* TransactionsBuffer.swift in Sources */,
 				OBJ_358 /* TransactionsBufferInterface.swift in Sources */,
+				3448246D223D4F010014B750 /* RippleMiddlewareInterface.swift in Sources */,
 				OBJ_359 /* Asset.swift in Sources */,
 				OBJ_360 /* RPCModel.swift in Sources */,
 				OBJ_361 /* Transaction.swift in Sources */,

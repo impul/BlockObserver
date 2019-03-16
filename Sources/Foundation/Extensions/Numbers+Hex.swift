@@ -8,16 +8,16 @@
 
 import Foundation
 
-extension UInt32 {
+extension UInt64 {
     public var hexString: String {
         return String(self, radix: 16, uppercase: true).addHexPrefix
     }
 }
 
 extension String {
-    public var hexToInt: UInt32 {
+    public var hexToInt: UInt64 {
         let hex = self.hasPrefix("0x") ? String(self.dropFirst(2)) : self
-        return UInt32(hex, radix: 16) ?? 0
+        return UInt64(hex, radix: 16) ?? 0
     }
     
     public var addHexPrefix: String {

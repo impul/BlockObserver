@@ -8,11 +8,6 @@
 
 import Foundation
 
-public protocol EthereumMiddlewareInterface {
-    func getLastBlockNumber(lastBlock: @escaping (UInt32) -> Void)
-    func getTransactionInBlockRange(from: UInt32, to: UInt32, transactions: @escaping ([EthereumTransaction]) -> Void)
-}
-
 public class EthereumMiddleware: EthereumMiddlewareInterface {
     private let etherRpcNetwork: NetworkManagerInterface
     
@@ -24,7 +19,7 @@ public class EthereumMiddleware: EthereumMiddlewareInterface {
         self.init(networkManager: NetworkManager(url))
     }
     
-    public func getLastBlockNumber(lastBlock: @escaping (UInt32) -> Void) {
+    public func getLastBlockNumber(lastBlock: @escaping (UInt64) -> Void) {
         etherRpcNetwork.makeAsyncRequest(EthereumEndpoint.getCurrentBlock) { (result: NetworkResult<RpcCurrentBlock>) in
             switch result {
             case .success(let object):
@@ -35,7 +30,7 @@ public class EthereumMiddleware: EthereumMiddlewareInterface {
         }
     }
     
-    public func getTransactionInBlockRange(from: UInt32, to: UInt32, transactions: @escaping ([EthereumTransaction]) -> Void) {
+    public func getTransactionInBlockRange(from: UInt64, to: UInt64, transactions: @escaping ([EthereumTransaction]) -> Void) {
         let endpoint = EthereumEndpoint.getTransaction(fromBlock: from, toBlock: to)
         etherRpcNetwork.makeAsyncRequest(endpoint) { (result: NetworkResult<RpcEthereumtransactionList>) in
             switch result {
