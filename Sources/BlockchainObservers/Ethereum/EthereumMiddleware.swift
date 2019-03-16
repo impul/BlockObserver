@@ -16,8 +16,12 @@ public protocol EthereumMiddlewareInterface {
 public class EthereumMiddleware: EthereumMiddlewareInterface {
     private let etherRpcNetwork: NetworkManagerInterface
     
-    public init(url: String) {
-        etherRpcNetwork = NetworkManager(url)
+    public init(networkManager: NetworkManagerInterface) {
+        self.etherRpcNetwork = networkManager
+    }
+    
+    public convenience init(url: String) {
+        self.init(networkManager: NetworkManager(url))
     }
     
     public func getLastBlockNumber(lastBlock: @escaping (UInt32) -> Void) {
