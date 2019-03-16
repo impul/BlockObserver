@@ -1,6 +1,6 @@
 //
 //  EthereumMiddlwareTests.swift
-//  Async
+//  Tests
 //
 //  Created by Pavlo Boiko on 3/16/19.
 //
