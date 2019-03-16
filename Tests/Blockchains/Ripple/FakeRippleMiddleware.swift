@@ -11,6 +11,11 @@ import XCTest
 
 class FakeRippleMiddleware: RippleMiddlewareInterface {
     private var currentBlock: UInt64 = 1
+    private var account: String
+    
+    init(account: String) {
+        self.account = account
+    }
     
     func getLastBlockNumber(lastBlock: @escaping (UInt64) -> Void) {
         lastBlock(currentBlock)
@@ -18,6 +23,6 @@ class FakeRippleMiddleware: RippleMiddlewareInterface {
     }
     
     func getTransactionInBlockRange(byBlock: UInt64, transactions: @escaping ([RippleTransaction]) -> Void) {
-        transactions([RippleTransaction(hash: "test", tx: .init(Account: "test"))])
+        transactions([RippleTransaction(hash: "test", tx: .init(Account: account))])
     }
 }

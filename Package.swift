@@ -20,7 +20,7 @@ let package = Package(
             path: "Sources"),
         .testTarget(
             name: "BlockObserverTests",
-            dependencies: ["BlockObserver"],
+            dependencies: ["BlockObserver", "Logging"],
             path: "Tests")
     ]
 )

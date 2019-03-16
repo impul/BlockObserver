@@ -13,7 +13,7 @@ class DefaultBlockchainObserver: BlockchainObserverInterface {
     var observedAddresses: Set<Address> = []
     var timer: BlocksTimerInterface?
     
-    required public init(delegate: BlockchainObserverDelegate) {
+    required public init(delegate: BlockchainObserverDelegate?) {
         self.delegate = delegate
         self.timer = BlocksTimer(tick: timerTick)
     }

@@ -14,12 +14,12 @@ internal class RippleBlockchainObserver: DefaultBlockchainObserver {
     
     let endpointMiddlware: RippleMiddlewareInterface
     
-    required init(endpointMiddlware: RippleMiddlewareInterface, delegate: BlockchainObserverDelegate) {
+    required init(endpointMiddlware: RippleMiddlewareInterface, delegate: BlockchainObserverDelegate?) {
         self.endpointMiddlware = endpointMiddlware
         super.init(delegate: delegate)
     }
     
-    convenience required init(delegate: BlockchainObserverDelegate) {
+    convenience required init(delegate: BlockchainObserverDelegate?) {
         let rpcUrl = Asset.ripple.rpcUrl
         self.init(endpointMiddlware: RippleMiddleware(url: rpcUrl), delegate: delegate)
     }

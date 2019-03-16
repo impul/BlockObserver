@@ -14,12 +14,12 @@ internal class EthereumBlockchainObserver: DefaultBlockchainObserver {
     
     let endpointMiddlware: EthereumMiddlewareInterface
     
-    required init(endpointMiddlware: EthereumMiddlewareInterface, delegate: BlockchainObserverDelegate) {
+    required init(endpointMiddlware: EthereumMiddlewareInterface, delegate: BlockchainObserverDelegate?) {
         self.endpointMiddlware = endpointMiddlware
         super.init(delegate: delegate)
     }
     
-    convenience required init(delegate: BlockchainObserverDelegate) {
+    convenience required init(delegate: BlockchainObserverDelegate?) {
         let rpcUrl = Asset.ethereum.rpcUrl
         self.init(endpointMiddlware: EthereumMiddleware(url: rpcUrl), delegate: delegate)
     }

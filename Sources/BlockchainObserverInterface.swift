@@ -18,7 +18,8 @@ public protocol BlockchainObserverDelegate: class {
 }
 
 public protocol BlockchainObserverInterface {
-    init (delegate: BlockchainObserverDelegate)
+    init (delegate: BlockchainObserverDelegate?)
+    var delegate: BlockchainObserverDelegate? { set get }
     var asset: Asset { get }
     
     func observe(_ address: Address)

@@ -31,6 +31,14 @@ public class BlockObserver: BlockchainObserverDelegate {
         }
     }
     
+    public init(blockchainsObservers: [BlockchainObserverInterface],
+                buffer: TransactionsBufferInterfce,
+                logger: Logger) {
+        self.blockchainsObservers = blockchainsObservers
+        self.logger = logger
+        self.buffer = buffer
+    }
+    
     public func addObserver(for address: Address, asset: Asset) {
         blockchainObservers(for: asset).forEach {
             $0.observe(address)
