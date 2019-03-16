@@ -11,16 +11,21 @@ import Logging
 
 public class BlockObserver: BlockchainObserverDelegate {
     private var blockchainsObservers: [BlockchainObserverInterface] = []
-    private var logger: PrintLogger
+    private var logger: Logger
+    private var buffer: TransactionsBufferInterfce
     
     public convenience init(assets: [Asset]) {
         self.init(blockchainsObservers: assets.map {
             return $0.defaultBlockchainObserver
-        })
+        }, buffer: TransactionsBuffer(capacity: 50),
+           logger: PrintLogger())
     }
     
-    public init(blockchainsObservers: [BlockchainObserverInterface.Type]) {
-        logger = PrintLogger()
+    public init(blockchainsObservers: [BlockchainObserverInterface.Type],
+                buffer: TransactionsBufferInterfce,
+                logger: Logger) {
+        self.logger = logger
+        self.buffer = buffer
         self.blockchainsObservers = blockchainsObservers.map {
             return $0.init(delegate: self)
         }
@@ -54,9 +59,14 @@ public class BlockObserver: BlockchainObserverDelegate {
         }
     }
     
+    public var transactions: [Transaction] {
+        return buffer.transactions
+    }
+    
     // MARK: - BlockchainObserverDelegate
     public func didReceive(newStatus: TransactionStatus, onObserver: BlockchainObserverInterface, address: Address, txId: String) {
         let info = "Did receive tx to \(address), with txId \(txId)"
+        buffer.append(Transaction(asset: onObserver.asset, txId: txId, receiverAddress: address))
         logger.info(info)
     }
 }

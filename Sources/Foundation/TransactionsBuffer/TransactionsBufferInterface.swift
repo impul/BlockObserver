@@ -7,12 +7,10 @@
 
 import Foundation
 
-public protocol TransactionsBufferInterfcae {
-    associatedtype Element
-    
+public protocol TransactionsBufferInterfce {
     init(capacity: Int)
-    
-    func append(_ element: Element)
-    var buffer: [Transaction] { get }
+
+    func append(_ element: Transaction)
+    var transactions: [Transaction] { get }
     var count: Int { get }
 }

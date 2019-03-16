@@ -7,10 +7,9 @@
 
 import Foundation
 
-class TransactionsBuffer: TransactionsBufferInterfcae {
+class TransactionsBuffer: TransactionsBufferInterfce {
     private var bufferContainer: [Transaction] = []
     private var capacity: Int
-    typealias Element = Transaction
     
     required init(capacity: Int) {
         self.capacity = capacity
@@ -23,7 +22,7 @@ class TransactionsBuffer: TransactionsBufferInterfcae {
         }
     }
     
-    var buffer: [Transaction] {
+    var transactions: [Transaction] {
         return bufferContainer.reversed()
     }
     

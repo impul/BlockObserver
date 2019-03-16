@@ -19,7 +19,7 @@ class  TransactionsBufferTests: XCTestCase {
         buffer.append(element2)
         buffer.append(element3)
         XCTAssertEqual(buffer.count, 2)
-        XCTAssertEqual(buffer.buffer[0].txId, "3")
-        XCTAssertEqual(buffer.buffer[1].txId, "2")
+        XCTAssertEqual(buffer.transactions[0].txId, "3")
+        XCTAssertEqual(buffer.transactions[1].txId, "2")
     }
 }
