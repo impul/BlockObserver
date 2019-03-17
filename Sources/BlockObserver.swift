@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Logging
 
 public class BlockObserver: BlockchainObserverDelegate {
     private var blockchainsObservers: [BlockchainObserverInterface] = []
@@ -91,6 +90,6 @@ public class BlockObserver: BlockchainObserverDelegate {
     public func didReceive(newStatus: TransactionStatus, onObserver: BlockchainObserverInterface, address: Address, txId: String) {
         let info = "Did receive tx to \(address), with txId \(txId)"
         buffer.append(Transaction(asset: onObserver.asset, txId: txId, receiverAddress: address))
-        logger.info(info)
+        logger.log(info)
     }
 }

@@ -10,17 +10,15 @@ let package = Package(
             name: "BlockObserver",
             targets: ["BlockObserver"]),
     ],
-    dependencies: [
-        .package(url: "https://github.com/vapor/console.git", from: "3.0.0"),
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "BlockObserver",
-            dependencies: ["Logging"],
+            dependencies: [],
             path: "Sources"),
         .testTarget(
             name: "BlockObserverTests",
-            dependencies: ["BlockObserver", "Logging"],
+            dependencies: ["BlockObserver"],
             path: "Tests")
     ]
 )

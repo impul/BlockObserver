@@ -6,7 +6,6 @@
 //
 
 @testable import BlockObserver
-@testable import Logging
 import XCTest
 
 
@@ -17,7 +16,7 @@ class TestLogger: Logger {
         self.testAction = testAction
     }
     
-    func log(_ string: String, at level: LogLevel, file: String, function: String, line: UInt, column: UInt) {
+    func log(_ string: String) {
         testAction(string)
     }
 }
