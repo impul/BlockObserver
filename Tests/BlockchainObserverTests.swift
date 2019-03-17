@@ -6,7 +6,6 @@
 //
 
 @testable import BlockObserver
-@testable import Logging
 import XCTest
 
 fileprivate var address = "0xBB5933843c4b4Ed2570344B7E1031974E07Ea52c"
