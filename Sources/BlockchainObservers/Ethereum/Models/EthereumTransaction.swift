@@ -14,7 +14,7 @@ public struct EthereumBlockDetail: Codable {
 
 public struct EthereumTransaction: Codable {
     var from: String
-    var blockHash: String
+    var hash: String
     var value: String
     var blockNumber: String
     var to: String

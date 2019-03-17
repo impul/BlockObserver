@@ -23,6 +23,6 @@ class FakeEthereumMiddlware: EthereumMiddlewareInterface {
     }
     
     func getTransactionsInBlock(block: UInt64, transactions: @escaping ([EthereumTransaction]) -> Void) {
-        transactions([EthereumTransaction(from: "test", blockHash: "test", value: "test", blockNumber: "test", to: address, input: "test")])
+        transactions([EthereumTransaction(from: "test", hash: "test", value: "test", blockNumber: "test", to: address, input: "test")])
     }
 }

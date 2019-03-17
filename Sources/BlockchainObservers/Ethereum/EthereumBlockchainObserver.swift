@@ -63,7 +63,7 @@ internal class EthereumBlockchainObserver: DefaultBlockchainObserver {
                 self.delegate?.didReceive(newStatus: txStatus,
                                           onObserver: self,
                                           address: tx.to,
-                                          txId: tx.blockHash)
+                                          txId: tx.hash)
             })
         }
     }
