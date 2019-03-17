@@ -8,16 +8,17 @@
 
 import Foundation
 
-public struct EthereumTransaction: Codable {
-    var type: String
-    var blockHash: String
-    var transactionHash: String
-    var transactionIndex: String
-    var topics: [String]
-    var blockNumber: String
-    var address: String
-    var transactionLogIndex: String
-    var logIndex :String
-    var removed: Bool
-    var data: String
+public struct EthereumBlockDetail: Codable {
+    var transactions: [EthereumTransaction]
 }
+
+public struct EthereumTransaction: Codable {
+    var from: String
+    var blockHash: String
+    var value: String
+    var blockNumber: String
+    var to: String
+    var input: String
+}
+
+

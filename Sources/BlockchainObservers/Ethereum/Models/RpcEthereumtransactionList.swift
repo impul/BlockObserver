@@ -9,7 +9,7 @@
 import Foundation
 
 public class RpcEthereumtransactionList: RPCModel {
-    public let result: [EthereumTransaction]
+    public let result: EthereumBlockDetail
     
     private enum CodingKeys: String, CodingKey {
         case result
@@ -17,7 +17,7 @@ public class RpcEthereumtransactionList: RPCModel {
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.result = try container.decode([EthereumTransaction].self, forKey: .result)
+        self.result = try container.decode(EthereumBlockDetail.self, forKey: .result)
         try super.init(from: decoder)
     }
 }

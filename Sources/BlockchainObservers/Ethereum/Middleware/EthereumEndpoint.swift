@@ -10,14 +10,14 @@ import Foundation
 
 enum EthereumEndpoint: RPC2RequestProtocol {
     case getCurrentBlock
-    case getTransaction(fromBlock: UInt64, toBlock: UInt64)
+    case getTransactions(block: UInt64)
     
     var rpcMethod: String {
         switch self {
         case .getCurrentBlock:
             return "eth_blockNumber"
-        case .getTransaction:
-            return "eth_getLogs"
+        case .getTransactions:
+            return "eth_getBlockByNumber"
         }
     }
     
@@ -29,8 +29,8 @@ enum EthereumEndpoint: RPC2RequestProtocol {
         switch self {
         case .getCurrentBlock:
             return []
-        case .getTransaction(let from, let to):
-            return [["fromBlock": from.hexString, "toBlock": to.hexString]]
+        case .getTransactions(let block):
+            return [block.hexString, true]
         }
     }
 }

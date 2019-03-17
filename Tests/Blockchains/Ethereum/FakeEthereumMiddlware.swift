@@ -22,7 +22,7 @@ class FakeEthereumMiddlware: EthereumMiddlewareInterface {
         currentBlock += 1
     }
     
-    func getTransactionInBlockRange(from: UInt64, to: UInt64, transactions: @escaping ([EthereumTransaction]) -> Void) {
-        transactions([EthereumTransaction(type: "test", blockHash: "test", transactionHash: "test", transactionIndex: "test", topics: ["test"], blockNumber: "test", address: address, transactionLogIndex: "test", logIndex: "test", removed: false, data: "test")])
+    func getTransactionsInBlock(block: UInt64, transactions: @escaping ([EthereumTransaction]) -> Void) {
+        transactions([EthereumTransaction(from: "test", blockHash: "test", value: "test", blockNumber: "test", to: address, input: "test")])
     }
 }

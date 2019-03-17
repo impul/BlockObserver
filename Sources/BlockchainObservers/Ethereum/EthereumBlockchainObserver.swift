@@ -45,17 +45,25 @@ internal class EthereumBlockchainObserver: DefaultBlockchainObserver {
         })
     }
     
+    
     private func checkTransactionsInBlocks(from: UInt64, to: UInt64) {
-        endpointMiddlware.getTransactionInBlockRange(from: from, to: to) { (transactions) in
+        for blockId in from..<to {
+            checkTransactionsInBlock(block: blockId)
+        }
+    }
+    
+    
+    private func checkTransactionsInBlock(block: UInt64) {
+        endpointMiddlware.getTransactionsInBlock(block: block) { (transactions) in
             transactions.filter({ (tx) -> Bool in
-                let isIncomingEthTransaction = self.observedAddresses.contains(tx.address)
+                let isIncomingEthTransaction = self.observedAddresses.contains(tx.to)
                 return isIncomingEthTransaction
             }).forEach({ (tx) in
-                let txStatus = TransactionStatus.confirmed(confirmations: to - tx.blockNumber.hexToInt)
+                let txStatus = TransactionStatus.confirmed(confirmations: (self.lastBlock ?? block) - block)
                 self.delegate?.didReceive(newStatus: txStatus,
                                           onObserver: self,
-                                          address: tx.address,
-                                          txId: tx.transactionHash)
+                                          address: tx.to,
+                                          txId: tx.blockHash)
             })
         }
     }

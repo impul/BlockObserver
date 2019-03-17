@@ -9,5 +9,5 @@ import Foundation
 
 public protocol EthereumMiddlewareInterface {
     func getLastBlockNumber(lastBlock: @escaping (UInt64) -> Void)
-    func getTransactionInBlockRange(from: UInt64, to: UInt64, transactions: @escaping ([EthereumTransaction]) -> Void)
+    func getTransactionsInBlock(block: UInt64, transactions: @escaping ([EthereumTransaction]) -> Void)
 }

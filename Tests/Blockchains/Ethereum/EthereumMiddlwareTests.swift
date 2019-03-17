@@ -41,11 +41,11 @@ class EthereumMiddlwareTests: XCTestCase {
     func testEthereumMiddlewareTransactionsSuccesResult() {
         let expect = expectation(description: "Succes request")
         
-        let modelString = "{\"jsonrpc\":\"2.0\",\"id\":0, \"result\": [\(transaction)]}"
+        let modelString = "{\"jsonrpc\":\"2.0\",\"id\":0, \"result\": { \"transactions\": [\(transaction)] }}"
         let data = Data(modelString.utf8)
         let networkManager = FakeSuccessNetworkManager(model: data)
         ethereumMiddlware = EthereumMiddleware(networkManager: networkManager)
-        ethereumMiddlware?.getTransactionInBlockRange(from: 1, to: 1, transactions: { (transactions) in
+        ethereumMiddlware?.getTransactionsInBlock(block: 1, transactions: { (transactions) in
             
             XCTAssertEqual(transactions.count , 1)
             
@@ -56,4 +56,4 @@ class EthereumMiddlwareTests: XCTestCase {
     }
 }
 
-fileprivate var transaction = "{\"type\":\"mined\",\"blockHash\":\"0x757012412be5a620d0a5c02c90b5b2dd55b31645e5d4f3787da40883f2c1ff46\",\"transactionHash\":\"0x69f2d4d58d2617364de5e4226529d1a665c38b13595d403408865c32fb209e2c\",\"transactionIndex\":\"0x0\",\"topics\":[\"0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef\",\"0x00000000000000000000000052629bf05f4d2ca4523ebaa0c4c2f36e20566897\",\"0x0000000000000000000000000930b0e6ef3e5d2d3e2b7343091937f8202c3f1d\"],\"blockNumber\":\"0x70852b\",\"address\":\"0x2d184014b5658c453443aa87c8e9c4d57285620b\",\"transactionLogIndex\":\"0x0\",\"logIndex\":\"0x0\",\"removed\":false,\"data\":\"0x00000000000000000000000000000000000000000000006605ff24bc95280000\"}"
+fileprivate var transaction = "{\"nonce\": \"0x12e31a\",\"from\": \"0x564286362092d8e7936f0549571a803b203aaced\",\"chainId\": \"0x1\",\"hash\": \"0x1bfad35a5a18cd77049855217190fbd038ef400784e7d4a88db6c36951f3c380\",\"blockHash\": \"0x951c968ca30fda890fd6b7c9f5eb523f31019c55dd7f2a52f1455a5355b3c0ad\",\"publicKey\": \"0x57a5263fde1a9af0897f91f89b195cd4b930bcbf01f607fb606d32a005813542cf61cd878e38e57bb1e57a0f6730c0711c4c75dca634a4242b680374b08f8c99\",\"standardV\": \"0x1\",\"gas\": \"0x19518\",\"value\": \"0x0\",\"blockNumber\": \"0x70a842\",\"to\": \"0x0d8775f648430679a709e98d2b0cb6250d2887ef\",\"s\": \"0x47e20ce96d97c4161272632c089c3d5939326fb5fa5543694ad8da8a78654a0d\",\"r\": \"0x34a0ea838fafe0ac2979cfa289c1578221fbf0d695f76465e82875024a7daad5\",\"v\": \"0x26\",\"input\": \"0xa9059cbb00000000000000000000000047449cea2b5da961e1ced7e7360529155f3493e700000000000000000000000000000000000000000000000ff011d2523cd80000\",\"transactionIndex\": \"0x0\",\"gasPrice\": \"0x9502f9000\"}"

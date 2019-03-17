@@ -30,12 +30,12 @@ public class EthereumMiddleware: EthereumMiddlewareInterface {
         }
     }
     
-    public func getTransactionInBlockRange(from: UInt64, to: UInt64, transactions: @escaping ([EthereumTransaction]) -> Void) {
-        let endpoint = EthereumEndpoint.getTransaction(fromBlock: from, toBlock: to)
+    public func getTransactionsInBlock(block: UInt64, transactions: @escaping ([EthereumTransaction]) -> Void) {
+        let endpoint = EthereumEndpoint.getTransactions(block: block)
         etherRpcNetwork.makeAsyncRequest(endpoint) { (result: NetworkResult<RpcEthereumtransactionList>) in
             switch result {
             case .success(let object):
-                transactions(object.result)
+                transactions(object.result.transactions)
             case .failure(let error):
                 print(error)
             }
