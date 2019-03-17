@@ -9,7 +9,7 @@
 import XCTest
 
 
-class TestLogger: Logger {
+class TestLogger: BlockLogger {
     let testAction: (String) -> Void
     
     init(testAction: @escaping (String) -> Void) {

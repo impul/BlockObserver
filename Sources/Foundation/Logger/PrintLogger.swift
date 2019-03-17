@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class PrintLogger: Logger {
+public class BlockPrintLogger: BlockLogger {
     public func log(_ string: String) {
         Swift.print(string)
     }

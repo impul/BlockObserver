@@ -10,7 +10,7 @@ import Foundation
 
 public class BlockObserver: BlockchainObserverDelegate {
     private var blockchainsObservers: [BlockchainObserverInterface] = []
-    private var logger: Logger
+    private var logger: BlockLogger
     private var buffer: TransactionsBufferInterfce
     
     /// Easy init way
@@ -20,7 +20,7 @@ public class BlockObserver: BlockchainObserverDelegate {
         self.init(blockchainsObservers: assets.map {
             return $0.defaultBlockchainObserver
         }, buffer: TransactionsBuffer(capacity: 50),
-           logger: PrintLogger())
+           logger: BlockPrintLogger())
     }
     
     /// Init with blockchain interfces
@@ -32,7 +32,7 @@ public class BlockObserver: BlockchainObserverDelegate {
     ///   - logger: log new transactions
     public init(blockchainsObservers: [BlockchainObserverInterface.Type],
                 buffer: TransactionsBufferInterfce,
-                logger: Logger) {
+                logger: BlockLogger) {
         self.logger = logger
         self.buffer = buffer
         self.blockchainsObservers = blockchainsObservers.map {
@@ -48,7 +48,7 @@ public class BlockObserver: BlockchainObserverDelegate {
     ///   - logger: log new transactions
     public init(blockchainsObservers: [BlockchainObserverInterface],
                 buffer: TransactionsBufferInterfce,
-                logger: Logger) {
+                logger: BlockLogger) {
         self.blockchainsObservers = blockchainsObservers
         self.logger = logger
         self.buffer = buffer
