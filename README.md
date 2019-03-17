@@ -15,7 +15,7 @@ Simple scalable blockchain observer
 To include BlockObserver using  [Swift Package Manager](https://swift.org/package-manager/) add this line to your Package.swift
 ```Swift
  dependencies: [
- .package(url: "https://github.com/impul/BlockObserver.git", from: "0.1.5")
+ .package(url: "https://github.com/impul/BlockObserver.git", from: "0.1.6")
  ]
 ```
 
