@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/impul/BlockObserver.svg?branch=develop)](https://travis-ci.com/impul/BlockObserver)
+[![Build Status](https://travis-ci.com/impul/BlockObserver.svg?branch=master)](https://travis-ci.com/impul/BlockObserver)
 [![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/BlockObserver/badge.png)](https://cocoadocs.org/docsets/BlockObserver)
 [![Badge w/ Platform](https://cocoapod-badges.herokuapp.com/p/BlockObserver/badge.svg)](https://cocoadocs.org/docsets/BlockObserver)
 [![Badge w/ Licence](https://cocoapod-badges.herokuapp.com/l/BlockObserver/badge.svg)](https://cocoadocs.org/docsets/BlockObserver)
