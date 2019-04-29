@@ -14,13 +14,14 @@ internal class EthereumBlockchainObserver: DefaultBlockchainObserver {
     
     let endpointMiddlware: EthereumMiddlewareInterface
     
-    required init(endpointMiddlware: EthereumMiddlewareInterface, delegate: BlockchainObserverDelegate?) {
+    required init(endpointMiddlware: EthereumMiddlewareInterface = EthereumMiddleware(url: Asset.ethereum.rpcUrl),
+                  delegate: BlockchainObserverDelegate?) {
         self.endpointMiddlware = endpointMiddlware
         super.init(delegate: delegate)
     }
     
-    convenience required init(delegate: BlockchainObserverDelegate?) {
-        let rpcUrl = Asset.ethereum.rpcUrl
+    public convenience required init(delegate: BlockchainObserverDelegate?) {
+        let rpcUrl = Asset.ripple.rpcUrl
         self.init(endpointMiddlware: EthereumMiddleware(url: rpcUrl), delegate: delegate)
     }
     
@@ -45,13 +46,11 @@ internal class EthereumBlockchainObserver: DefaultBlockchainObserver {
         })
     }
     
-    
     private func checkTransactionsInBlocks(from: UInt64, to: UInt64) {
         for blockId in from..<to {
             checkTransactionsInBlock(block: blockId)
         }
     }
-    
     
     private func checkTransactionsInBlock(block: UInt64) {
         endpointMiddlware.getTransactionsInBlock(block: block) { (transactions) in

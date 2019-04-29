@@ -9,14 +9,14 @@
 import XCTest
 
 
-class TestLogger: BlockLogger {
+class TestLogger: TransactionNotifier {
+    func log(_ transaction: Transaction) {
+        testAction(transaction.txId)
+    }
+    
     let testAction: (String) -> Void
     
     init(testAction: @escaping (String) -> Void) {
         self.testAction = testAction
-    }
-    
-    func log(_ string: String) {
-        testAction(string)
     }
 }

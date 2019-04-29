@@ -19,15 +19,14 @@ class TestBlockObserver: XCTestCase {
         let logger = TestLogger(testAction: { info in
             self.blockchainObserver?.stopObservers()
             
-            XCTAssertEqual("Did receive tx to \(address), with txId test", info)
+            XCTAssertEqual("test", info)
             
             expect.fulfill()
         })
         let middleware = FakeEthereumMiddlware(address: address)
         let ethereumBlockchainObserver = EthereumBlockchainObserver(endpointMiddlware: middleware, delegate: nil)
         blockchainObserver = BlockObserver(blockchainsObservers: [ethereumBlockchainObserver],
-                                           buffer: TransactionsBuffer(capacity: 50),
-                                           logger: logger)
+                                           notifier: logger)
         ethereumBlockchainObserver.delegate = blockchainObserver
         blockchainObserver?.addObserver(for: address, asset: .ethereum)
         

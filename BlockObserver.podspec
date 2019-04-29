@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "BlockObserver"
-  s.version      = "0.1.5"
+  s.version      = "0.2.0"
   s.summary      = "Blockchain observer"
 
   s.description  = <<-DESC
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "impul" => "pavlo.bojkoo@gmail.com" }
 
-  s.swift_version= '4.2'
+  s.swift_version= '5'
   s.static_framework  = true
 
   s.ios.deployment_target = "11.0"

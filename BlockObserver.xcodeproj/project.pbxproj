@@ -27,7 +27,7 @@
 		OBJ_103 /* BlockTimerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* BlockTimerInterface.swift */; };
 		OBJ_104 /* BlocksTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* BlocksTimer.swift */; };
 		OBJ_105 /* Numbers+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* Numbers+Hex.swift */; };
-		OBJ_106 /* BlockLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* BlockLogger.swift */; };
+		OBJ_106 /* TransactionNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* TransactionNotifier.swift */; };
 		OBJ_107 /* PrintLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* PrintLogger.swift */; };
 		OBJ_108 /* TransactionsBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* TransactionsBuffer.swift */; };
 		OBJ_109 /* TransactionsBufferInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* TransactionsBufferInterface.swift */; };
@@ -111,7 +111,7 @@
 		OBJ_34 /* BlockTimerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTimerInterface.swift; sourceTree = "<group>"; };
 		OBJ_35 /* BlocksTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksTimer.swift; sourceTree = "<group>"; };
 		OBJ_37 /* Numbers+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Hex.swift"; sourceTree = "<group>"; };
-		OBJ_39 /* BlockLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLogger.swift; sourceTree = "<group>"; };
+		OBJ_39 /* TransactionNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionNotifier.swift; sourceTree = "<group>"; };
 		OBJ_40 /* PrintLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintLogger.swift; sourceTree = "<group>"; };
 		OBJ_42 /* TransactionsBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsBuffer.swift; sourceTree = "<group>"; };
 		OBJ_43 /* TransactionsBufferInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsBufferInterface.swift; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 		OBJ_38 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_39 /* BlockLogger.swift */,
+				OBJ_39 /* TransactionNotifier.swift */,
 				OBJ_40 /* PrintLogger.swift */,
 			);
 			path = Logger;
@@ -544,7 +544,7 @@
 				OBJ_103 /* BlockTimerInterface.swift in Sources */,
 				OBJ_104 /* BlocksTimer.swift in Sources */,
 				OBJ_105 /* Numbers+Hex.swift in Sources */,
-				OBJ_106 /* BlockLogger.swift in Sources */,
+				OBJ_106 /* TransactionNotifier.swift in Sources */,
 				OBJ_107 /* PrintLogger.swift in Sources */,
 				OBJ_108 /* TransactionsBuffer.swift in Sources */,
 				OBJ_109 /* TransactionsBufferInterface.swift in Sources */,

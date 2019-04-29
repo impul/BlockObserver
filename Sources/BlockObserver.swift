@@ -9,49 +9,17 @@
 import Foundation
 
 public class BlockObserver: BlockchainObserverDelegate {
-    private var blockchainsObservers: [BlockchainObserverInterface] = []
-    private var logger: BlockLogger
-    private var buffer: TransactionsBufferInterfce
-    
-    /// Easy init way
-    ///
-    /// - Parameter assets: array of assets that you need
-    public convenience init(assets: [Asset]) {
-        self.init(blockchainsObservers: assets.map {
-            return $0.defaultBlockchainObserver
-        }, buffer: TransactionsBuffer(capacity: 50),
-           logger: BlockPrintLogger())
-    }
-    
-    /// Init with blockchain interfces
-    /// Important! BlockchainObserverInterface should create with required init
-    ///
-    /// - Parameters:
-    ///   - blockchainsObservers: array with blockchain observer types
-    ///   - buffer: responsible for collections transactions
-    ///   - logger: log new transactions
-    public init(blockchainsObservers: [BlockchainObserverInterface.Type],
-                buffer: TransactionsBufferInterfce,
-                logger: BlockLogger) {
-        self.logger = logger
-        self.buffer = buffer
-        self.blockchainsObservers = blockchainsObservers.map {
-            return $0.init(delegate: self)
-        }
-    }
+    private let blockchainsObservers: [BlockchainObserverInterface]
+    private let notifier: TransactionNotifier
     
     /// Init with custom blockchain observer realizations
     ///
     /// - Parameters:
     ///   - blockchainsObservers: array with blockchain observer objects
-    ///   - buffer: responsible for collections transactions
     ///   - logger: log new transactions
-    public init(blockchainsObservers: [BlockchainObserverInterface],
-                buffer: TransactionsBufferInterfce,
-                logger: BlockLogger) {
+    public init(blockchainsObservers: [BlockchainObserverInterface], notifier: TransactionNotifier) {
         self.blockchainsObservers = blockchainsObservers
-        self.logger = logger
-        self.buffer = buffer
+        self.notifier = notifier
     }
     
     public func addObserver(for address: Address, asset: Asset) {
@@ -66,7 +34,7 @@ public class BlockObserver: BlockchainObserverDelegate {
         }
     }
     
-    public func blockchainObservers(for asset: Asset) -> [BlockchainObserverInterface] {
+    private func blockchainObservers(for asset: Asset) -> [BlockchainObserverInterface] {
         return blockchainsObservers.filter({ $0.asset == asset })
     }
     
@@ -82,14 +50,9 @@ public class BlockObserver: BlockchainObserverDelegate {
         }
     }
     
-    public var transactions: [Transaction] {
-        return buffer.transactions
-    }
-    
     // MARK: - BlockchainObserverDelegate
     public func didReceive(newStatus: TransactionStatus, onObserver: BlockchainObserverInterface, address: Address, txId: String) {
-        let info = "Did receive tx to \(address), with txId \(txId)"
-        buffer.append(Transaction(asset: onObserver.asset, txId: txId, receiverAddress: address))
-        logger.log(info)
+        let transaction = Transaction(asset: onObserver.asset, txId: txId, receiverAddress: address)
+        notifier.log(transaction)
     }
 }

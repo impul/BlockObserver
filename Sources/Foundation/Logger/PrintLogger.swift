@@ -7,8 +7,8 @@
 
 import Foundation
 
-public class BlockPrintLogger: BlockLogger {
-    public func log(_ string: String) {
-        Swift.print(string)
+public class BlockPrintLogger: TransactionNotifier {
+    public func log(_ transaction: Transaction) {
+        Swift.print(transaction.txId)
     }
 }
